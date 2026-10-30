@@ -1,0 +1,7 @@
+node_modules/
+apps/web/dist/
+apps/api/vendor/
+apps/api/.env
+apps/api/storage/*.key
+release-manifest.json*
+.DS_Store

@@ -1,0 +1,12 @@
+# SEC-INT-030: dependency update PRs are opened weekly and always reviewed — never auto-merged.
+version: 2
+updates:
+  - package-ecosystem: composer
+    directory: /apps/api
+    schedule: { interval: weekly }
+  - package-ecosystem: npm
+    directory: /apps/web
+    schedule: { interval: weekly }
+  - package-ecosystem: github-actions
+    directory: /
+    schedule: { interval: weekly }

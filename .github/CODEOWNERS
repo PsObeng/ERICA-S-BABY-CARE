@@ -1,0 +1,18 @@
+# SEC-INT-013: changes to these paths need the owner's designated security reviewer.
+# Add a second reviewer here (a GitHub user or team) when one is appointed.
+*                                              @PsObeng
+/.github/                                      @PsObeng
+/apps/api/app/Actions/CompleteSale.php         @PsObeng
+/apps/api/app/Actions/VerifyMomoPayment.php    @PsObeng
+/apps/api/app/Actions/ProcessSyncBatch.php     @PsObeng
+/apps/api/app/Actions/RecordReceivablePayment.php @PsObeng
+/apps/api/app/Actions/RegisterCustomer.php     @PsObeng
+/apps/api/app/Actions/RecordConsent.php        @PsObeng
+/apps/api/app/Support/                         @PsObeng
+/apps/api/app/Http/Middleware/                 @PsObeng
+/apps/api/app/Console/Commands/                @PsObeng
+/apps/api/database/migrations/                 @PsObeng
+/apps/api/routes/                              @PsObeng
+/apps/api/config/                              @PsObeng
+/apps/web/src/lib/offline/                     @PsObeng
+/apps/web/src/lib/pricing.ts                   @PsObeng
