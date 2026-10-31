@@ -218,6 +218,22 @@ td.sn .snn{display:inline-block;min-width:1.4em}td.sn input,th.sn input{width:16
 .rg-done{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:16px;background:#F2FBF5;border:1px solid #BFE3CB}.rg-ok{width:46px;height:46px;flex:0 0 46px;border-radius:50%;display:grid;place-items:center;font-size:24px;font-weight:800;color:#fff;background:#15803D;box-shadow:0 3px 8px rgba(21,128,61,.35)}.rg-h{margin:16px 0 4px;color:var(--bb)}
 .wlset{margin-top:14px;border-top:4px solid var(--gold)}.wlset h3{margin-bottom:4px}.wl-row{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;margin:8px 0;border-radius:14px;background:#F6F8FB;border:1px solid #E2E7EE;cursor:pointer}.wl-row input{margin-top:4px}.wl-ic{font-size:18px}.wl-row small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
 @media (max-width:640px){.rg-types,.rg-chs{grid-template-columns:1fr}.rg-hero{padding:12px}.rg-sec{padding:12px}}
+.rg-cmp{padding:12px 14px 12px}.rg-cmp h4{font-size:14px;margin-bottom:8px}.rg-cmp .rg-n{width:22px;height:22px;font-size:12px}
+.rg-cmp .f{display:flex;align-items:center;gap:6px;font-size:12px;margin:0 0 3px}.rg-cmp .i{padding:7px 10px;font-size:14px;min-height:0;height:36px}
+.rg-r1{display:grid;grid-template-columns:78px minmax(0,1.5fr) minmax(0,1.45fr) 104px;gap:10px;align-items:end}
+.rg-r2{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,1fr);gap:10px;align-items:end;margin-top:10px}.rg-r3{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rg-cmp .rg-ph{height:36px}.rg-cmp .rg-ph>span{font-size:12px;padding:0 8px}.rg-cmp .rg-ph .i{height:36px}
+.rg-cmp .rg-net{min-height:0;margin:0;font-size:11.5px;font-weight:600}.rg-thint{min-height:0;margin-top:3px}.rg-thint:empty{display:none}
+.rg-cmp .rg-types{display:inline-flex;grid-template-columns:none;gap:0;margin:0;padding:3px;border-radius:999px;background:#EEF2F7;height:36px;box-sizing:border-box}
+.rg-cmp .rg-type{display:inline-flex;align-items:center;gap:5px;padding:0 12px;border:0;border-radius:999px;background:transparent;font-size:13px;font-weight:700;color:#3A4658;white-space:nowrap;transform:none!important;box-shadow:none}
+.rg-cmp .rg-type.on{background:var(--bb);color:#fff;box-shadow:0 2px 6px rgba(11,26,46,.25)}
+.rg-cmp .rg-ws{margin-top:10px;padding:8px 10px}
+.rg-cmp .rg-quote{margin:0 0 8px;padding:7px 12px;font-size:13px;line-height:1.4;border-radius:10px}.rg-cmp .rg-quote span{display:inline;font-size:10.5px;margin:0 4px 0 0}
+.rg-cmp .rg-chs{grid-template-columns:1fr 1fr;gap:8px;margin-bottom:4px}
+.rg-cmp .rg-ch{display:flex;align-items:center;gap:7px;padding:6px 6px 6px 10px;border-radius:999px;border-width:1.5px}.rg-cmp .rg-ch b{font-size:13.5px}
+.rg-cmp .rg-st{margin-left:0;font-size:10.5px;padding:2px 7px}.rg-cmp .rg-yn{margin-left:auto;display:inline-flex;gap:2px;padding:3px}.rg-cmp .rg-yn button{padding:5px 11px;font-size:12.5px;white-space:nowrap}.rg-cmp .rg-st{white-space:nowrap}
+.rg-fine{font-size:11.5px;margin-top:4px}
+@media (max-width:700px){.rg-r1{grid-template-columns:78px 1fr}.rg-r1>div:nth-child(3){grid-column:1/-1;order:3}.rg-r1>div:nth-child(4){order:2;grid-column:1/-1}.rg-r2{grid-template-columns:1fr 1fr}.rg-r2>div:nth-child(2){grid-column:1/-1}.rg-cmp .rg-chs{grid-template-columns:1fr}}
 .topr{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin-left:auto}.decorchip{cursor:pointer;gap:6px;font-weight:600;color:var(--bb);background:#fff}.decorchip input{margin:0;accent-color:var(--bb)}
 .decor-row{display:flex;justify-content:flex-end;margin:2px 0 -6px}.decor-row label{display:inline-flex;align-items:center;gap:6px;cursor:pointer}.decor-row+.cv-stats{margin-top:10px}
 .cv-stats.flat .cv-stat[class*=" c-"]{background:var(--b);box-shadow:none}.cv-stats.flat .cv-stat[class*=" c-"]::before{display:none}.cv-stats.flat .cv-stat span,.cv-stats.flat .cv-stat small{text-shadow:none}.cv-stats.flat .cv-stat{border-radius:14px}
@@ -1529,28 +1545,30 @@ function showReceipt(id, copy) {
 // customer registration (CRM-004, CON-001/002)
 function custForm(c) {
   c = c || {}; const own = isOwner(), isNew = !c.id, ty = c.type === 'wholesale' ? 'wholesale' : 'retail';
-  const yn = (f, ch, ic, title) => `<div class="rg-ch" data-ch="${ch}"><div class="rg-ch-h"><span class="rg-ci" aria-hidden="true">${ic}</span><b>${title}</b><span class="rg-st" id="${f}-st">Not asked yet</span></div>
+  const yn = (f, ch, ic, title) => `<div class="rg-ch" data-ch="${ch}"><span class="rg-ci" aria-hidden="true">${ic}</span><b>${title}</b><span class="rg-st" id="${f}-st">Not asked</span>
       <input type="hidden" id="${f}" value=""><div class="rg-yn" role="group" aria-label="${title} offers — customer's answer"><button type="button" data-f="${f}" data-v="opted_in" aria-pressed="false">✓ Yes</button><button type="button" data-f="${f}" data-v="withdrawn" aria-pressed="false">✕ No</button></div></div>`;
   modal(isNew ? 'Register customer' : 'Edit customer', `<div class="rg">
     <div class="rg-hero"><div class="rg-av" id="rg-av" aria-hidden="true">${esc(((c.name || '').trim()[0] || '+').toUpperCase())}</div><div class="rg-hid"><div class="rg-nm" id="rg-nm">${esc(c.name || 'New customer')}</div><div class="rg-sub" id="rg-sub">${c.phone ? esc(dispPhone(c.phone)) + ' · ' + network(c.phone) : 'Type the name and phone number to begin'}</div></div>${isNew ? '<span class="rg-tag">Welcome message sent on save</span>' : ''}</div>
-    <section class="rg-sec"><h4><span class="rg-n">1</span>Contact</h4><div class="grid g2">
-      <div><label class="f" for="c-name">Full name</label><input class="i" id="c-name" value="${esc(c.name)}" autocomplete="off" placeholder="e.g. Akosua Mensah"></div>
-      <div><label class="f" for="c-phone">Phone number</label><div class="rg-ph"><span aria-hidden="true">🇬🇭 +233</span><input class="i" id="c-phone" inputmode="tel" value="${esc(dispPhone(c.phone))}" placeholder="024 123 4567"></div><div class="rg-net" id="c-net" aria-live="polite"></div></div>
-      <div><label class="f" for="c-sex">Sex</label><select class="i" id="c-sex"><option value="" ${c.sex ? '' : 'selected'}>— choose —</option><option value="female" ${c.sex === 'female' ? 'selected' : ''}>Female</option><option value="male" ${c.sex === 'male' ? 'selected' : ''}>Male</option></select></div>
-      <div><label class="f" for="c-title">Title</label><select class="i" id="c-title"><option value="" ${c.title ? '' : 'selected'}>— none —</option>${['Mr', 'Mrs', 'Miss'].map(t => `<option ${c.title === t ? 'selected' : ''}>${t}</option>`).join('')}</select><div class="hint" id="c-thint"></div></div></div></section>
-    <section class="rg-sec"><h4><span class="rg-n">2</span>Customer type</h4><input type="hidden" id="c-type" value="${ty}">
-      <div class="rg-types" role="radiogroup" aria-label="Customer type">
-        <button type="button" class="rg-type ${ty === 'retail' ? 'on' : ''}" data-t="retail" role="radio" aria-checked="${ty === 'retail'}"><span class="rg-ti" aria-hidden="true">🛍️</span><b>Retail</b><small>Buys for their own baby and pays at the counter</small></button>
-        <button type="button" class="rg-type ${ty === 'wholesale' ? 'on' : ''}" data-t="wholesale" role="radio" aria-checked="${ty === 'wholesale'}"><span class="rg-ti" aria-hidden="true">🏪</span><b>Wholesale</b><small>A shop or reseller that may buy on credit</small></button></div>
-      <div id="c-ws" class="rg-ws" style="display:${ty === 'wholesale' ? 'block' : 'none'}"><div class="grid g2"><div><label class="f" for="c-limit">Credit limit (GH₵)</label><input class="i" id="c-limit" inputmode="decimal" value="${c.limit ? p2s(c.limit) : ''}" ${own ? '' : 'disabled'} placeholder="0.00"></div><div><label class="f" for="c-terms">Pay within (days)</label><input class="i" id="c-terms" inputmode="numeric" value="${c.terms || db.settings.creditTerms}" ${own ? '' : 'disabled'}></div></div>${own ? '' : '<div class="hint">Only the owner sets credit limits and terms.</div>'}</div></section>
-    <section class="rg-sec"><h4><span class="rg-n">3</span>Location</h4><div class="grid g2">
-      <div><label class="f" for="c-town">Town / area</label><input class="i" id="c-town" value="${esc(c.town)}" placeholder="e.g. Hansua, Techiman"></div>
-      <div><label class="f" for="c-gps">GhanaPostGPS <span class="hint">(optional)</span></label><input class="i" id="c-gps" value="${esc(c.gps)}" placeholder="BT-0000-0000"></div></div></section>
-    ${isNew ? `<section class="rg-sec"><h4><span class="rg-n">4</span>Marketing consent</h4>
-      <div class="rg-quote"><span>Read to the customer</span>“${esc(db.settings.consentText)}”</div>
+    <section class="rg-sec rg-cmp"><h4><span class="rg-n">1</span>Customer details</h4>
+      <div class="rg-r1">
+        <div><label class="f" for="c-title">Title</label><select class="i" id="c-title"><option value="" ${c.title ? '' : 'selected'}>—</option>${['Mr', 'Mrs', 'Miss'].map(t => `<option ${c.title === t ? 'selected' : ''}>${t}</option>`).join('')}</select></div>
+        <div><label class="f" for="c-name">Full name</label><input class="i" id="c-name" value="${esc(c.name)}" autocomplete="off" placeholder="e.g. Akosua Mensah"></div>
+        <div><label class="f" for="c-phone">Phone <span class="rg-net" id="c-net" aria-live="polite"></span></label><div class="rg-ph"><span aria-hidden="true">🇬🇭 +233</span><input class="i" id="c-phone" inputmode="tel" value="${esc(dispPhone(c.phone))}" placeholder="024 123 4567"></div></div>
+        <div><label class="f" for="c-sex">Sex</label><select class="i" id="c-sex"><option value="" ${c.sex ? '' : 'selected'}>—</option><option value="female" ${c.sex === 'female' ? 'selected' : ''}>Female</option><option value="male" ${c.sex === 'male' ? 'selected' : ''}>Male</option></select></div>
+      </div><div class="hint rg-thint" id="c-thint" aria-live="polite"></div>
+      <div class="rg-r2"><input type="hidden" id="c-type" value="${ty}">
+        <div><span class="f">Type</span><div class="rg-types" role="radiogroup" aria-label="Customer type">
+          <button type="button" class="rg-type ${ty === 'retail' ? 'on' : ''}" data-t="retail" role="radio" aria-checked="${ty === 'retail'}" title="Buys for their own baby and pays at the counter"><span aria-hidden="true">🛍️</span> Retail</button>
+          <button type="button" class="rg-type ${ty === 'wholesale' ? 'on' : ''}" data-t="wholesale" role="radio" aria-checked="${ty === 'wholesale'}" title="A shop or reseller that may buy on credit"><span aria-hidden="true">🏪</span> Wholesale</button></div></div>
+        <div><label class="f" for="c-town">Town / area</label><input class="i" id="c-town" value="${esc(c.town)}" placeholder="e.g. Hansua, Techiman"></div>
+        <div><label class="f" for="c-gps">GhanaPostGPS <span class="hint">(optional)</span></label><input class="i" id="c-gps" value="${esc(c.gps)}" placeholder="BT-0000-0000"></div>
+      </div>
+      <div id="c-ws" class="rg-ws" style="display:${ty === 'wholesale' ? 'block' : 'none'}"><div class="rg-r3"><div><label class="f" for="c-limit">Credit limit (GH₵)</label><input class="i" id="c-limit" inputmode="decimal" value="${c.limit ? p2s(c.limit) : ''}" ${own ? '' : 'disabled'} placeholder="0.00"></div><div><label class="f" for="c-terms">Pay within (days)</label><input class="i" id="c-terms" inputmode="numeric" value="${c.terms || db.settings.creditTerms}" ${own ? '' : 'disabled'}></div>${own ? '' : '<div class="hint">Only the owner sets credit limits and terms.</div>'}</div></div></section>
+    ${isNew ? `<section class="rg-sec rg-cmp"><h4><span class="rg-n">2</span>Marketing consent</h4>
+      <div class="rg-quote"><span>Read to the customer:</span> “${esc(db.settings.consentText)}”</div>
       <div class="rg-chs">${yn('c-wa', 'whatsapp', '💬', 'WhatsApp')}${yn('c-sms', 'sms', '✉️', 'SMS')}</div>
-      <div class="hint">Never answer for the customer. Buying does not mean they agreed. Wording version ${esc(db.settings.consentVersion)} is saved with the answer.</div></section>
-    <section class="rg-sec"><h4><span class="rg-n">5</span>Welcome message</h4><div class="rg-wel" id="rg-wel"></div>
+      <div class="hint rg-fine">Never answer for the customer — buying is not agreeing. Wording ${esc(db.settings.consentVersion)} is saved with the answer.</div></section>
+    <section class="rg-sec"><h4><span class="rg-n">3</span>Welcome message</h4><div class="rg-wel" id="rg-wel"></div>
       <div class="rg-msg"><div class="rg-mh"><b>The message</b><span class="hint" id="rg-wcount"></span><span class="sp"></span>${canEditWelcome() ? '<button type="button" class="btn sm sec" id="rg-edit">✎ Edit message</button>' : ''}</div>
         <div class="rg-bubble" id="rg-bubble"></div>
         <div id="rg-editor" class="rg-editor" hidden><label class="f" for="rg-wtext">Edit the welcome message</label><textarea class="i" id="rg-wtext" rows="5" maxlength="612">${esc(db.settings.welcomeMsg || welcomeDefault())}</textarea>
