@@ -266,7 +266,7 @@ td.sn .snn{display:inline-block;min-width:1.4em}td.sn input,th.sn input{width:16
 .tc-f{display:flex;flex-wrap:wrap;gap:5px}.tc-chip{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:rgba(255,255,255,.18)}.tc-chip.ok{background:#DDF3E5;color:#0E5A2B}.tc-chip.warn{background:#FFE7BF;color:#7A3A07}.tc-chip.bad{background:#FBD5D5;color:#8A1414}
 .tc-on{position:absolute!important;top:10px;right:-30px;transform:rotate(35deg);font-size:10px;font-weight:800;padding:2px 30px;background:#fff;color:var(--bb);box-shadow:0 1px 3px rgba(0,0,0,.3)}.tcard.on .tc-n{visibility:hidden}
 .tcards.flat .tcard{background:var(--h2);box-shadow:none}.tcards.flat .tcard::before{display:none}.tcards.flat .tcard.on{box-shadow:0 0 0 3px #fff,0 0 0 6px var(--bb)}
-.tc-title{font-size:15px}
+.tp-filter{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;border:0;border-radius:999px;padding:8px 14px;font:inherit;font-weight:700;font-size:13.5px;color:#fff;background:var(--bb);cursor:pointer;box-shadow:0 2px 6px rgba(11,26,46,.25)}.tp-filter span{opacity:.8}.tp-filter:hover{filter:brightness(1.15)}
 @media (max-width:520px){.tcards{gap:10px;grid-auto-columns:78%}.tcard{padding:12px 11px 10px}.tc-v b{font-size:20px}.tc-g b{font-size:13.5px}}
 .ptseg button small{opacity:.7;margin-left:3px}.ptag{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:999px;color:#fff;background:#16294A}.ptag.t-pants{background:#5B3A99}.ptag.t-wipes{background:#136E6E}
 @media (max-width:820px){.pf-grid{grid-template-columns:1fr}.pf-side{position:static;order:-1}.pf-prev{grid-template-columns:repeat(2,minmax(0,1fr))}.pf-r3{grid-template-columns:1fr 1fr}}
@@ -1924,9 +1924,10 @@ function typeCards(tf) { const T = {All: {ic: '📦', col: 't-all'}, ...PTYPES};
       <span class="tc-g"><span><small>In stock</small><b>${x.stock}</b><i>packs</i></span><span><small>Stock value</small><b>${cedis0(x.val)}</b><i>at cost</i></span><span><small>Profit</small><b>${x.mRev ? pctOf(x.mGP, x.mRev) + '%' : '—'}</b><i>this month</i></span></span>
       <span class="tc-f">${x.out ? `<span class="tc-chip bad">${x.out} out of stock</span>` : ''}${x.low ? `<span class="tc-chip warn">🔔 ${x.low} low</span>` : ''}${!x.out && !x.low ? '<span class="tc-chip ok">✓ Stock healthy</span>' : ''}<span class="tc-chip">All time ${cedis0(x.aRev)}</span></span>
       ${on ? '<span class="tc-on" aria-hidden="true">Showing ✓</span>' : ''}</button>`; }).join('')}</div>`; }
-VIEWS.products = () => { const tf = ui.tab.pt || 'All', list = db.products.filter(p => tf === 'All' || ptypeOf(p) === tf), cnt = t => db.products.filter(p => ptypeOf(p) === t).length;
-  return `${typeCards(tf)}<div class="card"><div class="row" style="margin-bottom:12px;gap:10px"><button class="btn gold" data-act="editprod">＋ Add product</button><b class="tc-title">${tf === 'All' ? 'All products' : PTYPES[tf].ic + ' ' + tf} <span class="hint">(${list.length})</span></b>${tf !== 'All' ? '<button class="btn sm sec" data-act="tab" data-g="pt" data-v="All">Show all</button>' : ''}
-    <span class="sp"></span><span class="hint">Prices are per pack unless marked carton.</span></div>
+VIEWS.products = () => { const tf = ui.tab.pt || 'All', pq = (ui.tab.pq || '').toLowerCase(), list = db.products.filter(p => (tf === 'All' || ptypeOf(p) === tf) && (!pq || (p.brand + ' ' + p.name + ' ' + p.sku + ' ' + p.size + ' ' + (p.line || '')).toLowerCase().includes(pq))), cnt = t => db.products.filter(p => ptypeOf(p) === t).length;
+  return `${typeCards(tf)}<div class="card"><div class="toolpill"><button class="tp-add" data-act="editprod"><span aria-hidden="true">＋</span> Add product</button><label class="tp-search"><span aria-hidden="true">⌕</span><input placeholder="Search brand, name, size, SKU" aria-label="Search products" data-in="pq" value="${esc(ui.tab.pq || '')}"></label>
+    ${tf !== 'All' ? `<button class="tp-filter" data-act="tab" data-g="pt" data-v="All" title="Show all products">${PTYPES[tf].ic} ${tf} <span aria-hidden="true">✕</span></button>` : ''}<span class="tp-count" aria-live="polite"><b>${list.length}</b> product${list.length === 1 ? '' : 's'}</span></div>
+    <p class="hint" style="margin:-4px 0 10px 6px">Prices are per pack unless marked carton.</p>
   <div class="tw"><table><thead><tr><th>Product</th><th>Type · size</th><th class="num">Buying</th><th class="num">Selling</th><th class="num">Margin</th><th class="num">Wholesale</th><th class="num">Carton</th><th class="num">In stock</th><th>Alert at</th><th></th></tr></thead><tbody>
   ${list.map(p => { const m = p.retail ? (p.retail - p.cost) / p.retail * 100 : 0, t = ptypeOf(p), a = avail(p.id);
     return `<tr><td><b>${esc(p.brand)}</b> ${esc(p.name)}<div class="hint">${esc(p.sku)}${p.expT ? ' · expiry tracked' : ''}${p.active ? '' : ' · <span class="tag bad">inactive</span>'}</div></td>
@@ -1934,7 +1935,7 @@ VIEWS.products = () => { const tf = ui.tab.pt || 'All', list = db.products.filte
     <td class="num">${GHS(p.cost)}</td><td class="num"><b>${GHS(p.retail)}</b></td><td class="num"><span class="tag ${m < 0 ? 'bad' : m < 10 ? 'warn' : 'ok'}">${m.toFixed(1)}%</span></td>
     <td class="num">${p.tierA ? GHS(p.tierA) + '<div class="hint">from ' + p.tierAMin + ' packs</div>' : '—'}</td><td class="num">${p.cartonPrice ? GHS(p.cartonPrice) : '—'}</td>
     <td class="num"><span class="tag ${a <= 0 ? 'bad' : lowOf(p) ? 'warn' : 'ok'}">${a} pack${a === 1 ? '' : 's'}</span></td><td>${p.low ? `🔔 ${p.low} packs` : '<span class="hint">off</span>'}</td>
-    <td><button class="btn sm sec" data-act="editprod" data-id="${p.id}">Edit</button> <button class="btn sm sec" data-act="phist" data-id="${p.id}">History</button></td></tr>`; }).join('') || '<tr><td colspan="10" class="empty">No products of this type yet.</td></tr>'}</tbody></table></div></div>`; };
+    <td><button class="btn sm sec" data-act="editprod" data-id="${p.id}">Edit</button> <button class="btn sm sec" data-act="phist" data-id="${p.id}">History</button></td></tr>`; }).join('') || `<tr><td colspan="10" class="empty">${pq ? 'No products match your search.' : 'No products of this type yet.'}</td></tr>`}</tbody></table></div></div>`; };
 function prodForm(id) {
   const p = id ? P(id) : {brand: '', name: '', cat: 'Diapers', size: 'M', packCount: '', cartonPacks: 1, cost: 0, retail: 0, tierA: 0, tierAMin: 10, cartonPrice: 0, low: 12, expT: false, active: true, line: ''};
   const t0 = ptypeOf(p), brands = brandList(), knownB = !p.brand || brands.includes(p.brand), la = db.settings.lowAlert || {}, smsIt = (db.integrations || []).find(i => i.enabled && i.kind === 'sms');
@@ -2339,7 +2340,7 @@ document.addEventListener('click', async e => {
 document.addEventListener('input', e => {
   const el = e.target; const k = el.dataset.in; if (!k) return;
   if (k === 'q') { ui.q = el.value; rerenderKeep(el); }
-  else if (k === 'sq' || k === 'cq') { ui.tab[k] = el.value; rerenderKeep(el); }
+  else if (k === 'sq' || k === 'cq' || k === 'pq') { ui.tab[k] = el.value; rerenderKeep(el); }
   else if (k === 'qty') { const n = parseInt(el.value); if (n > 0) { ui.cart.lines[el.dataset.i].qty = n; rerenderKeep(el); } }
   else if (k === 'disc') { ui.cart.disc.v = el.value; rerenderKeep(el); }
   else if (k === 'tend') tenderUpdate();
