@@ -179,6 +179,7 @@ td.sn .snn{display:inline-block;min-width:1.4em}td.sn input,th.sn input{width:16
 .cv-stat small{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.25}
 .cv-stat .chev{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-style:normal;font-size:20px;font-weight:700;opacity:.85;transition:transform .15s}.cv-stat.btnp:hover .chev{transform:translate(3px,-50%)}.cv-stat[aria-expanded=true] .chev{transform:translateY(-50%) rotate(90deg)}
 .cv-stat[aria-expanded=true]{outline:3px solid var(--bb);outline-offset:3px}
+.cv-stats[style="--n:1"]>.cv-stat{flex:0 1 380px}
 .statdetail{margin:4px 0 16px;border-top:5px solid var(--gold);animation:pillin .25s ease-out both}.statdetail .row{margin-bottom:10px;gap:8px;flex-wrap:wrap}
 @media (max-width:1100px){.cv-stats{--mx:4}}@media (max-width:860px){.cv-stats{--mx:3}}@media (max-width:640px){.cv-stats{--mx:2;gap:10px}.cv-stats>.cv-stat{flex-basis:calc((100% - 10px) / 2);height:92px;padding:8px 22px 8px 12px}}
 .cv-stat{padding:10px 16px;border-radius:999px;background:linear-gradient(180deg,#FFFFFF,#EEF2F7);box-shadow:inset 0 1px 0 #fff,0 0 0 1px #D3DAE4;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
@@ -305,7 +306,7 @@ details.tv{margin-top:8px}details.tv summary{cursor:pointer;font-size:13px;font-
 .cyl{display:flex;gap:14px;align-items:center}
 .stats{--n:6;--mx:99;--k:min(var(--n),var(--mx));display:flex!important;flex-wrap:wrap;justify-content:center;gap:14px 12px}
 .stats>[role=listitem]{flex:0 0 calc((100% - (var(--k) - 1) * 12px) / var(--k))}.stats .cylcard{height:96px;min-height:0;padding:8px 24px 8px 14px}.stats .cylcard .l{font-size:11px;letter-spacing:.03em}.stats .cylcard .v{font-size:23px}.stats .cylcard .s{font-size:11px;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;line-height:1.2}.stats .cylcard .chev{right:9px;font-size:19px}
-@media (max-width:1360px){.stats{--mx:5}}
+@media (max-width:1360px){.stats{--mx:6}}
 .stats .cylcard::before{height:22%;opacity:.75}.stats .cylcard:not(.c-gold) .l,.stats .cylcard:not(.c-gold) .s{text-shadow:0 1px 2px rgba(0,0,0,.55)}
 .cv-stat[class*=" c-"]::before{height:30%;opacity:.8}.cv-stat[class*=" c-"]:not(.c-gold) span,.cv-stat[class*=" c-"]:not(.c-gold) small{text-shadow:0 1px 2px rgba(0,0,0,.5)}
 .stats>[role=listitem]{perspective:700px;min-width:0}
@@ -1065,21 +1066,18 @@ function STAT_CARDS(range) {
   const expd = db.lots.filter(l => l.qty > 0 && isExpired(l)), near = db.lots.filter(l => l.qty > 0 && nearExp(l));
   const vsAvg = avg ? td.net / avg * 100 : 0;
   const cards = [
-    {k: 'sales', good: vsAvg >= 80, title: 'Sales today', value: cedis0(td.net), sub: avg ? `${Math.round(vsAvg)}% of ${range}-day average` : `${td.n} receipts`, pct: Math.min(100, vsAvg), tone: '', fill: `today vs the ${range}-day average (${GHS(Math.round(avg))}), up to 100%`},
     money && {k: 'profit', good: td.gp > 0, title: 'Gross profit', value: cedis0(td.gp), sub: td.net ? `today · ${(td.gp / td.net * 100).toFixed(1)}% margin` : 'today, before expenses', pct: td.net ? Math.max(0, td.gp / td.net * 100) : 0, tone: '', fill: 'gross margin %'},
+    money && (() => { const mS = db.sales.filter(s => s.ts >= monthStart()), mNet = sum(mS, netOf), mGP = sum(mS, gpOf); return {k: 'gpmonth', good: mGP > 0, title: 'Profit this month', value: cedis0(mGP), sub: `${pctOf(mGP, mNet)}% of ${cedis0(mNet)} sales`, tone: ''}; })(),
     {k: 'momo', good: !pendAll.length, title: 'MoMo to verify', value: String(pendAll.length), sub: pendAll.length ? `${cedis0(sum(pendAll, p => p.amount))} waiting` : 'all checked', pct: momoT.length ? sum(momoV, p => p.amount) / sum(momoT, p => p.amount) * 100 : 0, tone: pendAll.length ? 'warn' : '', fill: momoT.length ? `share of today's MoMo already verified` : 'no MoMo today'},
     {k: 'reorder', good: !low.length, title: 'To reorder', value: String(low.length), sub: `products under ${db.settings.reorderDays || 7} days`, pct: cover.length ? (cover.length - low.length) / cover.length * 100 : 0, tone: low.length ? 'warn' : '', fill: 'share of products with enough stock'},
     {k: 'credit', good: !limits || owed / limits < .7, title: 'Credit used', value: (limits ? Math.round(owed / limits * 100) : 0) + '%', sub: `${cedis0(owed)} of ${cedis0(limits)}`, pct: limits ? owed / limits * 100 : 0, tone: limits && owed / limits >= .9 ? 'bad' : limits && owed / limits >= .7 ? 'warn' : '', fill: 'amount owed ÷ total credit limits'},
     {k: 'expiry', good: !expd.length && !near.length, title: 'Expiry watch', value: String(expd.length + near.length), sub: `${expd.length} expired · ${near.length} near`, pct: (() => { const tr = db.lots.filter(l => l.qty > 0 && l.exp); return tr.length ? (tr.length - expd.length - near.length) / tr.length * 100 : 100; })(), tone: expd.length ? 'bad' : near.length ? 'warn' : '', fill: 'share of dated batches that are fine'},
     (() => { const nc = newCustCounts(); return {k: 'newcust', good: nc.today > 0, title: 'New customers', value: String(nc.today), sub: `today · ${nc.month} this month`, tone: ''}; })(),
-    {k: 'shift', good: !!openShift(cur.id), title: 'My cash shift', value: openShift(cur.id) ? cedis0(expectedCash(openShift(cur.id))) : 'Closed', sub: openShift(cur.id) ? 'expected in drawer' : 'open before selling', pct: openShift(cur.id) ? 100 : 0, tone: openShift(cur.id) ? '' : 'warn', fill: openShift(cur.id) ? 'shift open' : 'shift closed'},
     {k: 'receipts', title: 'Receipts today', value: String(td.n), sub: td.n ? `avg basket ${cedis0(td.net / td.n)}` : 'none yet today', tone: ''},
-    {k: 'cash', title: 'Cash today', value: cedis0(td.cash || 0), sub: `MoMo ${cedis0(td.momo || 0)}`, tone: ''},
     {k: 'period', title: `${range}-day sales`, value: cedis0(avg * range), sub: `≈ ${cedis0(avg)} a day`, tone: ''},
     {k: 'overdue', good: !od.length, title: 'Overdue', value: String(od.length), sub: od.length ? `accounts · ${cedis0(sum(od, c => balance(c.id)))}` : 'no one is late', tone: od.length ? 'bad' : ''},
     money && {k: 'stockval', title: 'Stock value', value: cedis0(sum(db.products, p => avail(p.id) * p.cost)), sub: `at cost · ${sum(db.products, p => avail(p.id))} packs`, tone: ''},
     {k: 'customers', title: 'Customers', value: String(db.customers.length), sub: `${db.customers.filter(c => canMarket(c, 'whatsapp')).length} accept WhatsApp`, tone: ''},
-    (() => { const top = Object.entries(td.items).sort((a, b) => b[1].packs - a[1].packs)[0]; return {k: 'top', good: !!top, title: 'Top seller today', value: top ? esc(P(top[0]).brand) : '—', sub: top ? `${top[1].packs} pack${top[1].packs === 1 ? '' : 's'} today` : 'none yet today', tone: ''}; })()
   ];
   // Colour carries status, and the words always say it too: red = act now, gold = needs attention, green = on track, blue = information.
   return cards.filter(Boolean).map(c => ({...c, col: c.tone === 'bad' ? 'red' : c.tone === 'warn' ? 'gold' : c.good ? 'green' : 'blue'}));
@@ -1114,6 +1112,8 @@ function KPI_DETAIL(k, range) {
     body = `<div class="seg" role="group" aria-label="Period" style="margin-bottom:10px">${NC_PERIODS.map(([v, l]) => `<button class="${per === v ? 'on' : ''}" data-act="ncp" data-v="${v}" aria-pressed="${per === v}">${l} (${cnt[v]})</button>`).join('')}</div>`
       + tbl(['Name', 'Phone', 'Type', 'Town', 'Registered', 'WhatsApp offers'], list.map(c => [esc(c.name), dispPhone(c.phone), c.type, esc(c.town || ''), c.created ? fmtDT(c.created) : '—', canMarket(c, 'whatsapp') ? 'yes' : 'no']));
     acts = go('customers', 'Open Customers'); }
+  if (k === 'gpmonth') { const mS = db.sales.filter(s => s.ts >= monthStart()), o = {}; mS.forEach(s => s.lines.forEach(l => { const q = l.qty - l.returned; o[l.pid] = o[l.pid] || [0, 0, 0]; o[l.pid][0] += l.packs || 0; o[l.pid][1] += l.unitPrice * q; o[l.pid][2] += l.unitPrice * q - Math.round(l.cost * q / l.qty); })); const disc = sum(mS, s => s.discount);
+    title = 'Gross profit this month by product'; body = tbl(['Product', 'Packs', 'Sales', 'Gross profit', 'Margin'], Object.entries(o).sort((a, b) => b[1][2] - a[1][2]).map(([k, v]) => [esc(P(k).brand + ' ' + P(k).name), v[0], GHS(v[1]), GHS(v[2]), pctOf(v[2], v[1]) + '%'])) + (disc ? `<p class="hint">Discounts of ${GHS(disc)} given this month are taken off the total.</p>` : ''); acts = go('reports', 'Open Reports'); }
   if (k === 'customers') { title = 'Newest customers'; body = tbl(['Name', 'Type', 'WhatsApp offers'], db.customers.slice(-10).reverse().map(c => [esc(c.name), c.type, canMarket(c, 'whatsapp') ? 'yes' : 'no'])); acts = go('customers', 'Open Customers'); }
   if (k === 'top') { title = 'Best sellers today (packs)'; body = tbl(['Product', 'Packs', 'Sales'], Object.entries(td.items).sort((a, b) => b[1].packs - a[1].packs).map(([pid, v]) => [esc(P(pid).brand + ' ' + P(pid).name), v.packs, GHS(v.rev)])); acts = can('sell') ? go('pos', 'New sale') : ''; }
   if (k === 'shift') { const sh = openShift(cur.id); title = 'My cash shift'; body = sh ? `<p>Opened ${fmtDT(sh.openTs)} with ${GHS(sh.float)} float. Expected cash now: <b>${GHS(expectedCash(sh))}</b>.</p>` : '<p>No open shift.</p>'; acts = go('shifts', sh ? 'Close or record cash' : 'Open shift'); }
@@ -1149,30 +1149,11 @@ function statDetailHTML(x) { const col = getComputedStyle(document.documentEleme
     ${x.note ? `<p class="hint" style="margin:0 0 10px">${x.note}</p>` : ''}${x.html || ''}${x.h ? dtbl(x.h, x.r || []) : ''}</section>`; }
 const insHead = t => `<h3 class="cv-h">${t}</h3>`;
 function dashInsights() {
-  const now = Date.now(), td = dayStartTs(), upto = now - td, yd = td - DAYMS, lw = td - 7 * DAYMS, between = (a, b) => db.sales.filter(s => s.ts >= a && s.ts <= b);
-  const tNet = sum(between(td, now), netOf), yNet = sum(between(yd, yd + upto), netOf), wNet = sum(between(lw, lw + upto), netOf);
-  const cmp = (a, b) => !b ? {v: a ? 'New high' : '—', c: 'c-blue'} : {v: (a >= b ? '▲ ' : '▼ ') + Math.abs(Math.round((a - b) / b * 100)) + '%', c: a >= b ? 'c-green' : 'c-red'};
-  const last30 = db.sales.filter(s => s.ts >= td - 29 * DAYMS), hrs = Array(24).fill(0), dys = Array(7).fill(0), hrV = Array(24).fill(0), dyV = Array(7).fill(0);
-  last30.forEach(s => { const d = new Date(s.ts); hrs[d.getHours()]++; dys[d.getDay()]++; hrV[d.getHours()] += netOf(s); dyV[d.getDay()] += netOf(s); }); const bh = hrs.indexOf(Math.max(...hrs)), bd = dys.indexOf(Math.max(...dys));
   const mS = db.sales.filter(s => s.ts >= monthStart()), mNet = sum(mS, netOf), mGP = sum(mS, gpOf);
-  const todayS = between(td, now), named = [...new Set(todayS.filter(s => s.cid).map(s => s.cid))], walk = todayS.filter(s => !s.cid).length, newC = named.filter(id => (C(id).created || 0) >= td).length;
-  const byHour = (a, b) => { const o = {}; between(a, b).forEach(s => { const h = new Date(s.ts).getHours(); o[h] = o[h] || [0, 0]; o[h][0]++; o[h][1] += netOf(s); }); return o; };
-  const compare = (from, name) => () => { const t = byHour(td, now), o = byHour(from, from + upto), hs = [...new Set([...Object.keys(t), ...Object.keys(o)])].sort((a, b) => a - b);
-    return {t: `Today compared with ${name}, hour by hour (up to ${tmS(now)})`, h: ['Hour', 'Receipts today', 'Sales today', `Receipts ${name}`, `Sales ${name}`, 'Difference'],
-      r: hs.map(h => [`${hh(+h)}:00–${hh(+h + 1)}:00`, (t[h] || [0])[0], GHS((t[h] || [0, 0])[1]), (o[h] || [0])[0], GHS((o[h] || [0, 0])[1]), GHS((t[h] || [0, 0])[1] - (o[h] || [0, 0])[1])])
-        .concat([['<b>Total</b>', `<b>${between(td, now).length}</b>`, `<b>${GHS(tNet)}</b>`, `<b>${between(from, from + upto).length}</b>`, `<b>${GHS(from === yd ? yNet : wNet)}</b>`, `<b>${GHS(tNet - (from === yd ? yNet : wNet))}</b>`]]), go: ['sales', 'Open Sales & returns']}; };
   return pills([
-    {l: 'Today vs yesterday', ...cmp(tNet, yNet), s: `${GHS(tNet)} now · ${GHS(yNet)} by this time yesterday`, d: compare(yd, 'yesterday')},
-    {l: 'Today vs last week', ...cmp(tNet, wNet), s: `${GHS(wNet)} by this time last ${DAYNAMES[new Date(lw).getDay()]}`, d: compare(lw, 'last ' + DAYNAMES[new Date(lw).getDay()])},
-    {l: 'Busiest hour', v: last30.length ? `${hh(bh)}:00–${hh(bh + 1)}:00` : '—', s: last30.length ? `${hrs[bh]} receipts in 30 days` : 'no sales yet', c: 'c-gold',
-      d: () => ({t: 'Receipts by hour of day, last 30 days', h: ['Hour', 'Receipts', 'Sales', 'Share of receipts'], r: hrs.map((n, h) => [h, n]).filter(x => x[1]).map(([h, n]) => [`${h === bh ? '★ ' : ''}${hh(h)}:00–${hh(h + 1)}:00`, n, GHS(hrV[h]), pctOf(n, last30.length) + '%']), note: 'Plan staff and restocking around the busiest hours.'})},
-    {l: 'Busiest day', v: last30.length ? DAYNAMES[bd] : '—', s: last30.length ? `${dys[bd]} receipts in 30 days` : '', c: 'c-purple',
-      d: () => ({t: 'Receipts by day of the week, last 30 days', h: ['Day', 'Receipts', 'Sales', 'Average receipt'], r: [1, 2, 3, 4, 5, 6, 0].map(i => [`${i === bd ? '★ ' : ''}${DAYNAMES[i]}`, dys[i], GHS(dyV[i]), GHS(dys[i] ? Math.round(dyV[i] / dys[i]) : 0)])})},
     can('reports') && {l: 'Gross profit this month', v: GHS(mGP), s: `${pctOf(mGP, mNet)}% of ${GHS(mNet)} sales`, c: 'c-green',
       d: () => { const o = {}; mS.forEach(s => s.lines.forEach(l => { const q = l.qty - l.returned, k = l.pid; o[k] = o[k] || [0, 0, 0]; o[k][0] += l.packs || 0; o[k][1] += l.unitPrice * q; o[k][2] += l.unitPrice * q - Math.round(l.cost * q / l.qty); })); const disc = sum(mS, s => s.discount);
-        return {t: 'Gross profit this month by product', h: ['Product', 'Packs', 'Sales', 'Gross profit', 'Margin'], r: Object.entries(o).sort((a, b) => b[1][2] - a[1][2]).map(([k, v]) => [pName(k), v[0], GHS(v[1]), GHS(v[2]), pctOf(v[2], v[1]) + '%']), note: disc ? `Discounts of ${GHS(disc)} are taken off the total.` : '', go: ['reports', 'Open Reports', 'reports']}; }},
-    {l: 'Customers today', v: String(named.length + walk), s: `${named.length - newC} returning · ${newC} new · ${walk} walk-in`, c: 'c-blue',
-      d: () => ({t: 'Who bought today', h: ['Time', 'Receipt', 'Customer', 'Kind', 'Total'], r: todayS.slice().sort((a, b) => b.ts - a.ts).map(s => [tmS(s.ts), esc(s.no), cName(s.cid), !s.cid ? 'Walk-in' : (C(s.cid).created || 0) >= td ? '<span class="tag ok">New</span>' : 'Returning', GHS(s.total)]), go: ['customers', 'Open Customers']})}], 'Today at a glance'); }
+        return {t: 'Gross profit this month by product', h: ['Product', 'Packs', 'Sales', 'Gross profit', 'Margin'], r: Object.entries(o).sort((a, b) => b[1][2] - a[1][2]).map(([k, v]) => [pName(k), v[0], GHS(v[1]), GHS(v[2]), pctOf(v[2], v[1]) + '%']), note: disc ? `Discounts of ${GHS(disc)} are taken off the total.` : '', go: ['reports', 'Open Reports', 'reports']}; }}], 'This month'); }
 function custInsightItems(c) {
   const sales = db.sales.filter(s => s.cid === c.id).sort((a, b) => a.ts - b.ts); if (!sales.length) return {items: [], extra: '<p class="hint">Insights appear after the first purchase.</p>'};
   const spent = sum(sales, netOf), meth = {}, methN = {}; sales.forEach(s => s.pays.forEach(p => { meth[p.method] = (meth[p.method] || 0) + p.amount; methN[p.method] = (methN[p.method] || 0) + 1; }));
@@ -1315,7 +1296,6 @@ VIEWS.dashboard = () => {
     </div>
     ${extra.length ? `<button class="morestats" data-act="morestats" aria-expanded="${!!ui.moreStats}" aria-controls="stat-grid"><span class="tri" aria-hidden="true">▶</span>${ui.moreStats ? 'Show fewer indicators' : `Show ${extra.length} more indicator${extra.length === 1 ? '' : 's'}`}</button>` : ''}`; })()}
     <div id="kpi-detail" aria-live="polite">${ui.kpi ? KPI_DETAIL(ui.kpi, range) : ''}</div>
-    ${insHead('Today at a glance')}${dashInsights()}
     <div class="grid g2" style="margin-top:14px">
       ${CHART_META.map(card).join('')}
       <div class="card" id="needs" tabindex="-1"><h3>Needs attention</h3><ol class="alerts">
