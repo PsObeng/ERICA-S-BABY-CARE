@@ -183,6 +183,7 @@ td.sn .snn{display:inline-block;min-width:1.4em}td.sn input,th.sn input{width:16
 .cv-stats.onerow{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;padding:5px 5px 7px;margin:8px -5px 6px;scrollbar-width:thin;scroll-snap-type:x proximity}
 .cv-stats.onerow>.cv-stat{flex:1 1 0;min-width:150px;scroll-snap-align:start}.cv-stats.onerow .cv-stat span{font-size:10.5px;letter-spacing:.03em}
 @media (max-width:640px){.cv-stats.onerow>.cv-stat{flex:0 0 46%;min-width:0}}
+.topr{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin-left:auto}.decorchip{cursor:pointer;gap:6px;font-weight:600;color:var(--bb);background:#fff}.decorchip input{margin:0;accent-color:var(--bb)}
 .decor-row{display:flex;justify-content:flex-end;margin:2px 0 -6px}.decor-row label{display:inline-flex;align-items:center;gap:6px;cursor:pointer}.decor-row+.cv-stats{margin-top:10px}
 .cv-stats.flat .cv-stat[class*=" c-"]{background:var(--b);box-shadow:none}.cv-stats.flat .cv-stat[class*=" c-"]::before{display:none}.cv-stats.flat .cv-stat span,.cv-stats.flat .cv-stat small{text-shadow:none}.cv-stats.flat .cv-stat{border-radius:14px}
 .statdetail{margin:4px 0 16px;border-top:5px solid var(--gold);animation:pillin .25s ease-out both}.statdetail .row{margin-bottom:10px;gap:8px;flex-wrap:wrap}
@@ -815,7 +816,7 @@ function hdrHTML(title, pm, online) { return `<div class="hdr"><div class="ghstr
         <button class="bell" data-act="bell" aria-label="${al ? al + ' thing' + (al === 1 ? '' : 's') + ' need attention' : 'Nothing needs attention'}"><span aria-hidden="true">🔔</span>${al ? `<span class="bd" aria-hidden="true">${al}</span>` : ''}</button>`; })()}
       <div class="who"><i aria-hidden="true">${esc((cur.name || '?').trim()[0].toUpperCase())}</i><span>${esc(cur.name)}<small>${ROLES[cur.role]}</small></span></div></div></header>
       <div class="top">${ui.route === 'dashboard' ? `<div class="greet"><h1 class="disp">${greeting()}, ${esc(cur.name)}</h1><span>— ${ROLES[cur.role]} · ${esc(db.settings.name)} · ${STORE_OK ? 'data saved on this device' : '<b style="color:var(--bad)">not saved — this view cannot keep data</b>'}</span></div>` : `<h1>${esc(title)}</h1>`}<span class="sp"></span>
-      ${db.settings.sample ? '<span class="chip sample" title="Replace with your real catalogue in Settings">Sample data</span>' : ''}
+      <div class="topr">${['dashboard', 'customers', 'wholesale', 'sales', 'momo', 'inventory', 'products', 'shifts'].includes(ui.route) ? `<label class="chip decorchip" title="Switch between glossy 3D and flat stat cards"><input type="checkbox" data-act="decor" ${db.settings.decor3d ? 'checked' : ''}> 3D style cards</label>` : ''}${db.settings.sample ? '<span class="chip sample" title="Replace with your real catalogue in Settings">Sample data</span>' : ''}</div>
       </div>
       </div>`; }
 // Apply a settings change everywhere at once: colours, browser title, sidebar name block and header — without re-drawing the form being edited.
@@ -1145,7 +1146,7 @@ const payWord = m => m === 'momo' ? 'MoMo' : m === 'credit' ? 'On account' : m =
 const salePays = s => s.pays.map(p => payWord(p.method)).filter((v, i, a) => a.indexOf(v) === i).join(' + ');
 function pills(items, label, extraCls) {
   items = items.filter(Boolean); const n = (extraCls || '').includes('onerow') ? items.length : Math.max(1, Math.ceil(items.length / 2));
-  return `<div class="decor-row"><label class="hint"><input type="checkbox" data-act="decor" ${db.settings.decor3d ? 'checked' : ''}> 3D style cards</label></div><div class="cv-stats insights ${extraCls || ''} ${db.settings.decor3d ? '' : 'flat'}" style="--n:${n}" role="list" aria-label="${esc(label)}">${items.map((x, i) => {
+  return `<div class="cv-stats insights ${extraCls || ''} ${db.settings.decor3d ? '' : 'flat'}" style="--n:${n}" role="list" aria-label="${esc(label)}">${items.map((x, i) => {
     const key = label + '|' + i; if (x.d) STATD[key] = x.d;
     const act = x.act ? `data-act="${x.act}" data-v="${esc(x.av || '')}" aria-pressed="${!!x.on}"` : `data-act="statd" data-k="${esc(key)}" aria-expanded="false"`;
     return `<button type="button" role="listitem" class="cv-stat btnp ${x.c || 'c-blue'} ${x.on ? 'on' : ''}" ${act} title="${esc(String(x.l).replace(/<[^>]+>/g, ''))} — select for details"><span>${x.l}</span><b>${x.v}</b>${x.s ? `<small>${x.s}</small>` : ''}<i class="chev" aria-hidden="true">›</i></button>`; }).join('')}</div>`; }
@@ -1290,8 +1291,7 @@ VIEWS.dashboard = () => {
   const cyl = (pct, tone, title, val, sub) => `<div class="card cyl"><div>${cylinder(pct, tone)}</div><div><div class="l">${title}</div><div class="v">${val}</div><div class="s">${sub}</div></div></div>`;
   // Chart cards: the previous drawing (if any) is held at reduced opacity until the new one is ready — no skeleton flash, no layout jump.
   const card = ([id, title, perm]) => perm && !can(perm) ? '' : `<figure class="card chart" data-chart="${id}" aria-busy="true"><figcaption><h3>${title.replace('{n}', range)}</h3><p class="take">${ui.chartCache[id] ? ui.chartCache[id].take : '&nbsp;'}</p></figcaption><div class="cbody${ui.chartCache[id] ? ' stale' : ''}" style="min-height:${ui.chartCache[id] ? 0 : 220}px">${ui.chartCache[id] ? ui.chartCache[id].body : ''}</div></figure>`;
-  return `<div class="row filters" style="margin-bottom:12px"><span class="hint">Period</span><div class="seg" role="group" aria-label="Period">${[7, 14, 30].map(n => `<button class="${range === n ? 'on' : ''}" data-act="tab" data-g="dr" data-v="${n}" aria-pressed="${range === n}">${n} days</button>`).join('')}</div><span class="sp"></span>
-      <label class="row hint" style="gap:6px"><input type="checkbox" data-act="decor" ${db.settings.decor3d ? 'checked' : ''}> 3D style cards</label></div>
+  return `<div class="row filters" style="margin-bottom:12px"><span class="hint">Period</span><div class="seg" role="group" aria-label="Period">${[7, 14, 30].map(n => `<button class="${range === n ? 'on' : ''}" data-act="tab" data-g="dr" data-v="${n}" aria-pressed="${range === n}">${n} days</button>`).join('')}</div></div>
     ${(() => { const all = STAT_CARDS(range), SHOW = 12; ui.statCol = Object.fromEntries(all.map(c => [c.k, c.col]));
       // Red cards are never tucked away behind "Show more".
       const extra = []; // every card is shown, in two even rows
