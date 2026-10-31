@@ -1535,7 +1535,9 @@ function custForm(c) {
     <div class="rg-hero"><div class="rg-av" id="rg-av" aria-hidden="true">${esc(((c.name || '').trim()[0] || '+').toUpperCase())}</div><div class="rg-hid"><div class="rg-nm" id="rg-nm">${esc(c.name || 'New customer')}</div><div class="rg-sub" id="rg-sub">${c.phone ? esc(dispPhone(c.phone)) + ' · ' + network(c.phone) : 'Type the name and phone number to begin'}</div></div>${isNew ? '<span class="rg-tag">Welcome message sent on save</span>' : ''}</div>
     <section class="rg-sec"><h4><span class="rg-n">1</span>Contact</h4><div class="grid g2">
       <div><label class="f" for="c-name">Full name</label><input class="i" id="c-name" value="${esc(c.name)}" autocomplete="off" placeholder="e.g. Akosua Mensah"></div>
-      <div><label class="f" for="c-phone">Phone number</label><div class="rg-ph"><span aria-hidden="true">🇬🇭 +233</span><input class="i" id="c-phone" inputmode="tel" value="${esc(dispPhone(c.phone))}" placeholder="024 123 4567"></div><div class="rg-net" id="c-net" aria-live="polite"></div></div></div></section>
+      <div><label class="f" for="c-phone">Phone number</label><div class="rg-ph"><span aria-hidden="true">🇬🇭 +233</span><input class="i" id="c-phone" inputmode="tel" value="${esc(dispPhone(c.phone))}" placeholder="024 123 4567"></div><div class="rg-net" id="c-net" aria-live="polite"></div></div>
+      <div><label class="f" for="c-sex">Sex</label><select class="i" id="c-sex"><option value="" ${c.sex ? '' : 'selected'}>— choose —</option><option value="female" ${c.sex === 'female' ? 'selected' : ''}>Female</option><option value="male" ${c.sex === 'male' ? 'selected' : ''}>Male</option></select></div>
+      <div><label class="f" for="c-title">Title</label><select class="i" id="c-title"><option value="" ${c.title ? '' : 'selected'}>— none —</option>${['Mr', 'Mrs', 'Miss'].map(t => `<option ${c.title === t ? 'selected' : ''}>${t}</option>`).join('')}</select><div class="hint" id="c-thint"></div></div></div></section>
     <section class="rg-sec"><h4><span class="rg-n">2</span>Customer type</h4><input type="hidden" id="c-type" value="${ty}">
       <div class="rg-types" role="radiogroup" aria-label="Customer type">
         <button type="button" class="rg-type ${ty === 'retail' ? 'on' : ''}" data-t="retail" role="radio" aria-checked="${ty === 'retail'}"><span class="rg-ti" aria-hidden="true">🛍️</span><b>Retail</b><small>Buys for their own baby and pays at the counter</small></button>
@@ -1552,18 +1554,18 @@ function custForm(c) {
       <div class="rg-msg"><div class="rg-mh"><b>The message</b><span class="hint" id="rg-wcount"></span><span class="sp"></span>${canEditWelcome() ? '<button type="button" class="btn sm sec" id="rg-edit">✎ Edit message</button>' : ''}</div>
         <div class="rg-bubble" id="rg-bubble"></div>
         <div id="rg-editor" class="rg-editor" hidden><label class="f" for="rg-wtext">Edit the welcome message</label><textarea class="i" id="rg-wtext" rows="5" maxlength="612">${esc(db.settings.welcomeMsg || welcomeDefault())}</textarea>
-          <div class="rg-ins"><span class="hint">Insert:</span><button type="button" class="chip" data-ins="{name}">Customer's first name</button><button type="button" class="chip" data-ins="{shop}">Shop name</button></div>
+          <div class="rg-ins"><span class="hint">Insert:</span><button type="button" class="chip" data-ins="{title}">Customer's title (Mr, Mrs, Miss)</button><button type="button" class="chip" data-ins="{name}">Customer's first name</button><button type="button" class="chip" data-ins="{shop}">Shop name</button></div>
           <div class="row" style="margin-top:8px;gap:8px"><button type="button" class="btn sm" id="rg-wsave">Save message</button><button type="button" class="btn sm sec" id="rg-wcancel">Cancel</button><span class="sp"></span><button type="button" class="btn sm sec" id="rg-wreset">Use the standard wording</button></div>
           <div class="hint">Saved for every new customer. Keep “Reply STOP to stop offers” so customers can say no.</div></div></div></section>` : ''}
     <div class="err" id="c-err" role="alert"></div></div>`, `<button class="btn sec" data-act="close">Cancel</button><button class="btn gold" data-act="savecust" data-id="${c.id || ''}">${isNew ? '✓ Register customer' : 'Save changes'}</button>`, true);
   const root = $('#modal-root .rg'), ph = $('#c-phone'), nm = $('#c-name');
-  const hero = () => { const e = normPhone(ph.value), n = nm.value.trim(); $('#rg-av').textContent = (n[0] || '+').toUpperCase(); $('#rg-nm').textContent = n || 'New customer';
+  const hero = () => { const e = normPhone(ph.value), n = nm.value.trim(), tt = $('#c-title').value; $('#rg-av').textContent = (n[0] || '+').toUpperCase(); $('#rg-nm').textContent = n ? (tt ? tt + ' ' : '') + n : 'New customer';
     $('#rg-sub').textContent = e ? `${dispPhone(e)} · ${network(e)}` : 'Type the name and phone number to begin';
     $('#c-net').innerHTML = e ? `<span class="ok">✓ ${esc(network(e))} number</span>` : (ph.value ? '<span class="no">Not a valid Ghana number yet</span>' : ''); };
   const wel = () => { const box = $('#rg-wel'); if (!box) return; box.innerHTML = [['whatsapp', 'c-wa', '💬', 'WhatsApp'], ['sms', 'c-sms', '✉️', 'SMS']].map(([ch, f, ic, l]) => { const p = welcomePlan(ch, $('#' + f).value);
       return `<div class="rg-wl ${p.cls}"><span aria-hidden="true">${ic}</span><b>${l}</b><span>${p.text}</span></div>`; }).join(''); };
   const prev = () => { const b = $('#rg-bubble'); if (!b) return; const ed = $('#rg-editor'), raw = ed && !ed.hidden ? $('#rg-wtext').value : null;
-    const txt = raw != null ? (raw.trim() || ' ').replace(/\{name\}/g, firstName({name: nm.value}) || 'there').replace(/\{shop\}/g, db.settings.name) : welcomeText({name: nm.value || 'Akosua'});
+    const who = {name: nm.value || 'Akosua', title: $('#c-title').value}, txt = raw != null ? fillWelcome(raw.trim() || ' ', who) : welcomeText(who);
     b.textContent = txt; const n = txt.length; $('#rg-wcount').textContent = `${n} characters · ${n <= 160 ? 1 : Math.ceil(n / 153)} SMS`; };
   const edBtn = $('#rg-edit'); if (edBtn) {
     edBtn.onclick = () => { $('#rg-editor').hidden = false; edBtn.hidden = true; $('#rg-wtext').value = db.settings.welcomeMsg || welcomeDefault(); $('#rg-wtext').focus(); prev(); };
@@ -1574,6 +1576,10 @@ function custForm(c) {
       db.settings.welcomeMsg = v === welcomeDefault() ? '' : v; audit('settings.welcome', 'wording changed while registering'); save(); toast('Welcome message saved.'); close(); };
     $('#modal-root .rg').addEventListener('click', e => { const ins = e.target.closest('[data-ins]'); if (!ins) return; const ta = $('#rg-wtext'), a = ta.selectionStart, z = ta.selectionEnd;
       ta.value = ta.value.slice(0, a) + ins.dataset.ins + ta.value.slice(z); ta.focus(); ta.selectionStart = ta.selectionEnd = a + ins.dataset.ins.length; prev(); }); }
+  const sx = $('#c-sex'), tl = $('#c-title'), fitT = () => { const v = sx.value, t = tl.value;
+      if (v === 'male') { tl.value = 'Mr'; $('#c-thint').textContent = ''; } else if (v === 'female') { if (t === 'Mr' || !t) tl.value = ''; $('#c-thint').textContent = tl.value ? '' : 'Choose Mrs or Miss'; } else $('#c-thint').textContent = '';
+      [...tl.options].forEach(o => { o.disabled = (v === 'male' && /^(Mrs|Miss)$/.test(o.value)) || (v === 'female' && o.value === 'Mr'); }); };
+  sx.onchange = () => { fitT(); hero(); prev(); }; tl.onchange = () => { $('#c-thint').textContent = ''; hero(); prev(); }; fitT();
   ph.oninput = hero; nm.oninput = () => { hero(); prev(); }; hero(); wel(); prev();
   root.addEventListener('click', e => { const t = e.target.closest('.rg-type'); if (t) { $('#c-type').value = t.dataset.t; root.querySelectorAll('.rg-type').forEach(b => { const on = b === t; b.classList.toggle('on', on); b.setAttribute('aria-checked', on); }); $('#c-ws').style.display = t.dataset.t === 'wholesale' ? 'block' : 'none'; return; }
     const y = e.target.closest('.rg-yn button'); if (y) { const f = y.dataset.f; $('#' + f).value = y.dataset.v; y.parentNode.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b === y)); const st = $('#' + f + '-st'); st.textContent = y.dataset.v === 'opted_in' ? 'Said yes' : 'Said no'; st.className = 'rg-st ' + (y.dataset.v === 'opted_in' ? 'ok' : 'no'); y.closest('.rg-ch').classList.toggle('yes', y.dataset.v === 'opted_in'); y.closest('.rg-ch').classList.toggle('no', y.dataset.v !== 'opted_in'); wel(); } });
@@ -1593,7 +1599,7 @@ function saveCust(id) {
     [['whatsapp', wa], ['sms', sms]].forEach(([ch, st]) => db.consents.push({id: uid(), cid: c.id, ch, status: st, version: db.settings.consentVersion, source: 'counter (staff-assisted)', staff: cur.id, ts: Date.now()}));
     audit('customer.create', `${name} ${dispPhone(phone)} wa:${wa} sms:${sms}`);
   } else audit('customer.edit', name);
-  Object.assign(c, {name, phone, type, town: $('#c-town').value.trim(), gps: $('#c-gps').value.trim().toUpperCase()});
+  Object.assign(c, {name, phone, type, sex: $('#c-sex').value, title: $('#c-title').value, town: $('#c-town').value.trim(), gps: $('#c-gps').value.trim().toUpperCase()});
   if (type === 'wholesale' && isOwner()) { c.limit = toP($('#c-limit').value); c.terms = parseInt($('#c-terms').value) || db.settings.creditTerms; }
   if (type === 'wholesale' && c.limit == null) { c.limit = 0; c.terms = db.settings.creditTerms; }
   save(); if (!id) emit('customer.registered', {customer: {name, phone: dispPhone(phone), type, town: c.town}, whatsappOffers: consentOf(c.id, 'whatsapp'), smsOffers: consentOf(c.id, 'sms')}); closeModal();
@@ -1603,7 +1609,9 @@ function saveCust(id) {
 }
 // Welcome messages: sent by themselves through a connected SMS gateway or the WhatsApp Cloud API; otherwise staff press Send.
 const firstName = c => String((c && c.name) || '').replace(/\(.*?\)/g, '').trim().split(/\s+/)[0] || '';
-function welcomeText(c) { const t = (db.settings.welcomeMsg || '').trim(); if (t) return t.replace(/\{name\}/g, firstName(c) || 'there').replace(/\{shop\}/g, db.settings.name); return welcomeDefault(c); }
+// {title} becomes Mr, Mrs or Miss; with no title saved it is left out cleanly ("Hello {title} {name}" → "Hello Esi").
+function fillWelcome(t, c) { const tt = (c && c.title) || ''; return t.replace(/\{title\}\s*/g, tt ? tt + ' ' : '').replace(/\{name\}/g, firstName(c) || 'there').replace(/\{shop\}/g, db.settings.name).replace(/ {2,}/g, ' ').replace(/ ([,.!?])/g, '$1'); }
+function welcomeText(c) { const t = (db.settings.welcomeMsg || '').trim(); if (t) return fillWelcome(t, c); return welcomeDefault(c); }
 const canEditWelcome = () => isOwner() || cur.role === 'manager';
 const autoOn = ch => !db.settings.autoWelcome || db.settings.autoWelcome[ch] !== false;
 const chanInt = ch => (db.integrations || []).find(i => i.enabled && i.kind === (ch === 'sms' ? 'sms' : 'whatsapp'));
@@ -1877,8 +1885,8 @@ function custView(id) {
     return `<div class="cv-ch"><div class="cv-ch-top"><span class="cv-ic" aria-hidden="true">${ch === 'whatsapp' ? '💬' : '✉'}</span><b>${ch === 'whatsapp' ? 'WhatsApp' : 'SMS'}</b><span class="cv-st ${lab[0]}">${lab[1]}</span></div>
       <div class="seg cv-seg" role="group" aria-label="${ch === 'whatsapp' ? 'WhatsApp' : 'SMS'} consent"><button class="${st === 'opted_in' ? 'on' : ''}" data-act="consent" data-id="${id}" data-ch="${ch}" data-s="opted_in" ${st === 'opted_in' ? 'disabled aria-pressed="true"' : 'aria-pressed="false"'}>✓ Said yes</button><button class="${st === 'withdrawn' ? 'on stop' : ''}" data-act="consent" data-id="${id}" data-ch="${ch}" data-s="withdrawn" ${st === 'withdrawn' ? 'disabled aria-pressed="true"' : 'aria-pressed="false"'}>Opt out / STOP</button></div></div>`; };
   modal(c.name, `<div class="cv">
-    <div class="cv-hero"><div class="cv-av" aria-hidden="true">${esc(initials)}</div><div class="cv-id"><div class="cv-name">${esc(c.name)}</div>
-      <div class="cv-pills"><span class="cv-pill ${c.type === 'wholesale' ? 'gold' : 'navy'}">${c.type}</span><span class="cv-pill">📞 ${esc(dispPhone(c.phone))} · ${network(c.phone)}</span>${c.town ? `<span class="cv-pill">📍 ${esc(c.town)}</span>` : ''}${c.gps ? `<span class="cv-pill">${esc(c.gps)}</span>` : ''}${c.created ? `<span class="cv-pill">Since ${fmtD(c.created)}</span>` : ''}</div></div></div>
+    <div class="cv-hero"><div class="cv-av" aria-hidden="true">${esc(initials)}</div><div class="cv-id"><div class="cv-name">${c.title ? esc(c.title) + ' ' : ''}${esc(c.name)}</div>
+      <div class="cv-pills"><span class="cv-pill ${c.type === 'wholesale' ? 'gold' : 'navy'}">${c.type}</span>${c.sex ? `<span class="cv-pill">${c.sex === 'female' ? '♀ Female' : '♂ Male'}</span>` : ''}<span class="cv-pill">📞 ${esc(dispPhone(c.phone))} · ${network(c.phone)}</span>${c.town ? `<span class="cv-pill">📍 ${esc(c.town)}</span>` : ''}${c.gps ? `<span class="cv-pill">${esc(c.gps)}</span>` : ''}${c.created ? `<span class="cv-pill">Since ${fmtD(c.created)}</span>` : ''}</div></div></div>
     ${(() => { const ci = custInsightItems(c), rec = sales.slice().sort((a, b) => b.ts - a.ts), lastS = rec[0], inv = db.invoices.filter(i => i.cid === id && invLeft(i) > 0);
       return pills([
         {l: 'Purchases', v: String(sales.length), s: sales.length ? `first on ${fmtD(Math.min(...sales.map(s => s.ts)))}` : 'none yet', c: 'c-blue', d: () => ({t: 'Every purchase', h: ['Date', 'Receipt', 'Items', 'Paid by', 'Served by', 'Total'], r: rec.map(s => [fmtDT(s.ts), esc(s.no), s.lines.map(l => `${pName(l.pid)} × ${l.packs}`).join('<br>'), salePays(s), sName(s.staff), GHS(s.total)])})},
@@ -2290,7 +2298,7 @@ function welcomeSettingsHTML() { const t = welcomeText({name: 'Akosua'}), n = t.
   return `<div class="card wlset"><h3>Welcome messages for new customers</h3><p class="hint" style="margin-top:0">Sent when a customer is registered, only on the channels they said yes to.${wq ? ` <b>${wq} waiting to send.</b>` : ''}</p>
     ${row('sms', '✉️', 'SMS')}${row('whatsapp', '💬', 'WhatsApp')}
     <label class="f" for="wl-text">Welcome wording (SMS, and WhatsApp when it opens for staff)</label><textarea class="i" id="wl-text" rows="4" maxlength="612">${esc(db.settings.welcomeMsg || welcomeDefault())}</textarea>
-    <div class="hint">Write {name} for the customer's first name and {shop} for the shop name. Now ${n} characters = ${parts} SMS per customer. The WhatsApp Cloud API sends your approved template instead.</div>
+    <div class="hint">Write {title} for Mr, Mrs or Miss, {name} for the customer's first name and {shop} for the shop name. Now ${n} characters = ${parts} SMS per customer. The WhatsApp Cloud API sends your approved template instead.</div>
     <div class="row" style="margin-top:8px"><button class="btn sm" data-act="welsave">Save wording</button><button class="btn sm sec" data-act="welreset">Use the standard wording</button></div></div>`; }
 function intTabHTML() { const L = db.integrations || [], qn = id => (db.hookQueue || []).filter(q => q.iid === id).length;
   const card = it => { const c = it.cfg, m = it.mask || {}; const meta = it.kind === 'webhook' ? `To ${esc(m.url || '—')} · ${(c.events || []).length} event type${(c.events || []).length === 1 ? '' : 's'}${c.pii ? ' · includes customer details' : ''}${m.sign ? ' · signed' : ''}`
