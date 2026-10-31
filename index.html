@@ -1190,7 +1190,7 @@ function custInsights(c) { const x = custInsightItems(c); return (x.items.length
 function custWinback(lastMap) { const now = Date.now(), b = {active: 0, d30: 0, d60: 0, d90: 0, never: 0};
   db.customers.forEach(c => { const l = lastMap[c.id]; if (!l) b.never++; else { const d = (now - l) / DAYMS; if (d < 30) b.active++; else if (d < 60) b.d30++; else if (d < 90) b.d60++; else b.d90++; } });
   const f = ui.tab.cwin || '', it = (k, l, s, c) => ({l, v: String(b[k]), s, c, act: 'cwin', av: k, on: f === k});
-  return pills([it('active', 'Active', 'bought in the last 30 days', 'c-green'), it('d30', '30–59 days', 'not seen — remind them', 'c-gold'), it('d60', '60–89 days', 'not seen — win back', 'c-amber'), it('d90', '90+ days', 'not seen — likely lost', 'c-red'), it('never', 'Never bought', 'registered, no purchase yet', 'c-purple')], 'Customers by last visit')
+  return pills([it('active', 'Active', 'bought in the last 30 days', 'c-green'), it('d30', '30–59 days', 'not seen — remind them', 'c-gold'), it('d60', '60–89 days', 'not seen — win back', 'c-amber'), it('d90', '90+ days', 'not seen — likely lost', 'c-red'), it('never', 'Never bought', 'registered, no purchase yet', 'c-purple')], 'Customers by last visit', 'onerow')
     + (f ? '<p class="hint" style="margin:-2px 0 10px">The list below shows this group only. Press the same pill again to show everyone.</p>' : ''); }
 function custLastMap() { const m = {}; db.sales.forEach(s => { if (s.cid && s.ts > (m[s.cid] || 0)) m[s.cid] = s.ts; }); return m; }
 function custInGroup(c, lastMap) { const f = ui.tab.cwin; if (!f) return true; const l = lastMap[c.id]; if (f === 'never') return !l; if (!l) return false; const d = (Date.now() - l) / DAYMS;
