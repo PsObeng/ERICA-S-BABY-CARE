@@ -234,6 +234,27 @@ td.sn .snn{display:inline-block;min-width:1.4em}td.sn input,th.sn input{width:16
 .rg-cmp .rg-st{margin-left:0;font-size:10.5px;padding:2px 7px}.rg-cmp .rg-yn{margin-left:auto;display:inline-flex;gap:2px;padding:3px}.rg-cmp .rg-yn button{padding:5px 11px;font-size:12.5px;white-space:nowrap}.rg-cmp .rg-st{white-space:nowrap}
 .rg-fine{font-size:11.5px;margin-top:4px}
 @media (max-width:700px){.rg-r1{grid-template-columns:78px 1fr}.rg-r1>div:nth-child(3){grid-column:1/-1;order:3}.rg-r1>div:nth-child(4){order:2;grid-column:1/-1}.rg-r2{grid-template-columns:1fr 1fr}.rg-r2>div:nth-child(2){grid-column:1/-1}.rg-cmp .rg-chs{grid-template-columns:1fr}}
+.md.wide:has(.pf){max-width:1040px}.md:has(.pf)>header{position:sticky;top:-5vh;z-index:3}.md:has(.pf)>footer{position:sticky;bottom:-5vh;z-index:3;background:#fff;border-radius:0 0 12px 12px;box-shadow:0 -8px 16px rgba(11,26,46,.08);padding-bottom:calc(12px + 5vh);margin-bottom:-5vh}
+.pf{--tc:#16294A;--tl:#EEF3FA}.pf[data-t=Pants]{--tc:#5B3A99;--tl:#F3EEFB}.pf[data-t=Wipes]{--tc:#136E6E;--tl:#E8F6F6}
+.pf-types{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+.pf-type{--h1:#2C4772;--h2:#16294A;--h3:#0B1A2E;display:flex;align-items:center;justify-content:center;gap:10px;padding:12px;border:0;border-radius:16px;font:inherit;font-size:16px;cursor:pointer;color:#3A4658;background:#F1F4F8;box-shadow:0 0 0 1px #DCE3EC;transition:transform .15s,box-shadow .15s}
+.pf-type span{font-size:22px}.pf-type:hover{transform:translateY(-2px)}.pf-type.t-pants{--h1:#7A4FB8;--h2:#5B3A99;--h3:#3F2670}.pf-type.t-wipes{--h1:#1E8A8A;--h2:#136E6E;--h3:#0B4D4D}
+.pf-type.on{color:#fff;background:linear-gradient(180deg,var(--h1),var(--h2) 55%,var(--h3));box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 6px 14px rgba(11,26,46,.25)}.pf-type:focus-visible,.pf-sz:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.pf-grid{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:14px;align-items:start}
+.pf-sec{padding:12px 14px;border-radius:16px;background:#fff;box-shadow:0 0 0 1px #E2E7EE;margin-bottom:10px;border-left:4px solid var(--tc)}.pf-sec h4{margin:0 0 8px;font-size:14.5px;color:var(--tc)}
+.pf .f{font-size:12px;margin:8px 0 3px;display:flex;gap:5px;align-items:center;flex-wrap:wrap}.pf .i{height:36px;padding:6px 10px;font-size:14px}
+.pf-r{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pf-r3{display:grid;grid-template-columns:1.2fr .8fr 1.2fr;gap:10px}
+.pf-sizes{display:flex;flex-wrap:wrap;gap:6px}.pf-sz{display:flex;flex-direction:column;align-items:center;min-width:64px;padding:6px 10px;border-radius:12px;border:1.5px solid #DCE3EC;background:#F8FAFD;cursor:pointer;font:inherit}.pf-sz b{font-size:15px;color:var(--tc)}.pf-sz small{font-size:10.5px;color:var(--muted)}
+.pf-sz.on{background:var(--tc);border-color:var(--tc)}.pf-sz.on b,.pf-sz.on small{color:#fff}
+.pf-only{display:none}.pf:not([data-t=Wipes]) .pf-size{display:block}.pf[data-t=Wipes] .pf-wipes{display:grid}
+.pf-gh{display:flex;align-items:stretch;border-radius:10px;overflow:hidden;box-shadow:0 0 0 1px #CBD3DE}.pf-gh span{display:flex;align-items:center;padding:0 9px;font-size:12px;font-weight:700;background:#F1F4F8;color:#3A4658}.pf-gh .i{border:0;border-radius:0;box-shadow:none;flex:1;min-width:0}
+.pf-margin{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 2px}.pf-mc{font-size:12px;padding:3px 10px;border-radius:999px;background:#E9F6EE;color:#14632F;border:1px solid #BFE3CB}.pf-mc.warn{background:#FFF3E0;color:#8A4A06;border-color:#F3CF9A}.pf-mc.bad{background:#FDECEC;color:#9B1C1C;border-color:#F3C0C0}
+.pf-alert{border-left-color:var(--gold);background:#FFFCF2}.pf-ck{display:flex;align-items:center;gap:7px;font-size:13px;margin:5px 0;flex-wrap:wrap}.pf-tiny{height:30px!important;width:150px;font-size:13px!important}
+.pf-side{position:sticky;top:60px}.pf-prevlab{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}.pf-prev{grid-template-columns:1fr;padding:0}.pf-prev .pc{cursor:default}.pf-prev .pc:hover{transform:none}
+.pf-tip{margin-top:10px;font-size:12.5px;line-height:1.4;padding:8px 10px;border-radius:12px;background:var(--tl);color:#3A4658}
+.ptseg button small{opacity:.7;margin-left:3px}.ptag{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:999px;color:#fff;background:#16294A}.ptag.t-pants{background:#5B3A99}.ptag.t-wipes{background:#136E6E}
+@media (max-width:820px){.pf-grid{grid-template-columns:1fr}.pf-side{position:static;order:-1}.pf-prev{grid-template-columns:repeat(2,minmax(0,1fr))}.pf-r3{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.pf-r{grid-template-columns:1fr}.pf-type{flex-direction:column;gap:2px;font-size:14px;padding:10px 6px}}
 .topr{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin-left:auto}.decorchip{cursor:pointer;gap:6px;font-weight:600;color:var(--bb);background:#fff}.decorchip input{margin:0;accent-color:var(--bb)}
 .decor-row{display:flex;justify-content:flex-end;margin:2px 0 -6px}.decor-row label{display:inline-flex;align-items:center;gap:6px;cursor:pointer}.decor-row+.cv-stats{margin-top:10px}
 .cv-stats.flat .cv-stat[class*=" c-"]{background:var(--b);box-shadow:none}.cv-stats.flat .cv-stat[class*=" c-"]::before{display:none}.cv-stats.flat .cv-stat span,.cv-stats.flat .cv-stat small{text-shadow:none}.cv-stats.flat .cv-stat{border-radius:14px}
@@ -530,7 +551,22 @@ let db = null, mem = null, cur = null;
 const STORE_OK = (() => { try { const k = '__dw360_probe'; localStorage.setItem(k, '1'); localStorage.removeItem(k); return true; } catch (e) { return false; } })();
 const NOSAVE = `<div class="nosave" role="alert"><b>This view cannot save anything.</b> Your logo, sales, customers and settings are lost as soon as it is closed or reloaded (a chat preview panel works this way). To keep them, open the app from its link, or open the downloaded HTML file in Chrome or Edge.</div>`;
 function load() { try { const r = localStorage.getItem(KEY); return r ? JSON.parse(r) : mem; } catch (e) { return mem; } }
-function save() { mem = db; try { localStorage.setItem(KEY, JSON.stringify(db)); } catch (e) { /* storage unavailable: kept in memory */ } }
+function save() { mem = db; try { localStorage.setItem(KEY, JSON.stringify(db)); } catch (e) { /* storage unavailable: kept in memory */ } if (!lowBusy) { clearTimeout(lowT); lowT = setTimeout(checkLowStock, 300); } }
+// Low-stock alerts: each product alerts once when it falls to its level, and again only after it has been restocked above it.
+let lowBusy = false, lowT = 0;
+async function checkLowStock() { if (!db || !cur || lowBusy) return; lowBusy = true; const hit = [];
+  try { for (const p of db.products) { if (!p.active || !p.low) continue; const a = avail(p.id);
+      if (a <= p.low && !p.lowSent) { p.lowSent = true; hit.push({p, a}); audit('stock.low', `${p.brand} ${p.name}: ${a} packs (alert at ${p.low})`); }
+      else if (a > p.low && p.lowSent) p.lowSent = false; }
+    if (!hit.length) return; save();
+    const msg = hit.map(x => `${x.p.brand} ${x.p.name}: ${x.a <= 0 ? 'OUT OF STOCK' : x.a + ' pack' + (x.a === 1 ? '' : 's') + ' left'}`).join('; ');
+    toast('🔔 Low stock — ' + msg, true); const bl = document.querySelector('.bell'); if (bl && !bl.querySelector('.bd')) bl.insertAdjacentHTML('beforeend', '<span class="bd" aria-hidden="true">1</span>');
+    const la = db.settings.lowAlert || {};
+    if (la.push && 'Notification' in window && Notification.permission === 'granted') { try { new Notification('Low stock — ' + db.settings.name, {body: msg, tag: 'lowstock'}); } catch (e) {} }
+    const it = (db.integrations || []).find(i => i.enabled && i.kind === 'sms');
+    if (la.sms && la.phone && it) { const text = `${db.settings.name} stock alert: ${msg}. Reorder soon.`;
+      try { await sendSMS(it, la.phone, text.slice(0, 459)); it.last = {ts: Date.now(), ok: true, msg: 'Low-stock SMS sent'}; } catch (e) { it.last = {ts: Date.now(), ok: false, msg: 'Low-stock SMS not sent: ' + e.message}; } save(); }
+  } finally { lowBusy = false; } }
 
 // ---------- audit log (hash-chained, SEC-INT-060) ----------
 let auditQ = Promise.resolve();
@@ -1377,11 +1413,12 @@ VIEWS.dashboard = () => {
       ${CHART_META.map(card).join('')}
       <div class="card" id="needs" tabindex="-1"><h3>Needs attention</h3><ol class="alerts">
         ${!sh && can('sell') ? `<li><span class="tag warn">Shift</span> No open cash shift. <a href="#" data-act="go" data-r="shifts">Open one</a></li>` : ''}
+        ${(() => { const L = db.products.filter(p => p.active && p.low && lowOf(p)); return L.length ? `<li><span class="tag ${L.some(p => avail(p.id) <= 0) ? 'bad' : 'warn'}">Low stock</span> ${L.slice(0, 4).map(p => `${esc(p.brand + ' ' + p.name)} (${avail(p.id)})`).join(', ')}${L.length > 4 ? ` and ${L.length - 4} more` : ''} — <a href="#" data-act="go" data-r="inventory">Receive stock</a></li>` : ''; })()}
         ${pm.length ? `<li><span class="tag warn">MoMo</span> ${pm.length} payment${pm.length === 1 ? '' : 's'} awaiting verification</li>` : ''}
         ${expd.length ? `<li><span class="tag bad">Expired</span> ${expd.length} batch${expd.length === 1 ? '' : 'es'} blocked — write off in Stock</li>` : ''}
         ${near.length ? `<li><span class="tag warn">Near expiry</span> ${near.length} batch${near.length === 1 ? '' : 'es'} within ${db.settings.nearExpiryDays} days</li>` : ''}
         ${overdue.length ? `<li><span class="tag bad">Overdue</span> ${overdue.map(c => esc(c.name)).join(', ')}</li>` : ''}
-        ${!pm.length && !expd.length && !near.length && !overdue.length && (sh || !can('sell')) ? '<li>All clear.</li>' : ''}</ol></div>
+        ${!pm.length && !expd.length && !near.length && !overdue.length && (sh || !can('sell')) && !db.products.some(p => p.active && p.low && lowOf(p)) ? '<li>All clear.</li>' : ''}</ol></div>
     </div>`;
 };
 // Progressive drawing: charts in view are drawn first, one per animation frame in priority order; the rest when scrolled near.
@@ -1845,29 +1882,95 @@ async function saveCount() {
 }
 
 // Products & prices (CAT/PRC)
-VIEWS.products = () => `${productInsights()}<div class="card"><div class="row" style="margin-bottom:10px"><button class="btn gold" data-act="editprod">+ Add product</button><span class="sp"></span><span class="hint">Prices are per pack unless marked carton. Margin = gross margin.</span></div>
-  <div class="tw"><table><thead><tr><th>SKU</th><th>Product</th><th>Units</th><th class="num">Cost (WAC)</th><th class="num">Retail</th><th class="num">Margin</th><th class="num">Tier A</th><th class="num">Carton</th><th></th></tr></thead><tbody>
-  ${db.products.map(p => { const m = p.retail ? (p.retail - p.cost) / p.retail * 100 : 0; return `<tr><td>${esc(p.sku)}</td><td><b>${esc(p.brand)}</b> ${esc(p.name)}${p.expT ? ' <span class="tag">expiry tracked</span>' : ''}${p.active ? '' : ' <span class="tag bad">inactive</span>'}</td><td>${p.packCount} pcs · ${cartonLabel(p)}</td>
-    <td class="num">${GHS(p.cost)}</td><td class="num"><b>${GHS(p.retail)}</b></td><td class="num"><span class="tag ${m < 0 ? 'bad' : m < 10 ? 'warn' : 'ok'}">${m.toFixed(1)}%</span></td><td class="num">${p.tierA ? GHS(p.tierA) + ' @' + p.tierAMin + '+' : '—'}</td><td class="num">${p.cartonPrice ? GHS(p.cartonPrice) : '—'}</td>
-    <td><button class="btn sm sec" data-act="editprod" data-id="${p.id}">Edit</button> <button class="btn sm sec" data-act="phist" data-id="${p.id}">History</button></td></tr>`; }).join('')}</tbody></table></div></div>`;
+// ---------- Products & prices: a form that changes with the product type ----------
+const PTYPES = {
+  Diapers: {ic: '👶', col: 't-diapers', word: 'Diapers', sizes: [['NB', 'Newborn', 'up to 5 kg'], ['S', 'Small', '3–6 kg'], ['M', 'Medium', '6–11 kg'], ['L', 'Large', '9–14 kg'], ['XL', 'Extra Large', '12–17 kg'], ['XXL', 'XX Large', '15 kg +']], pcs: [24, 30, 36, 40, 44, 50, 58, 64, 72], expT: false, lineEg: 'e.g. Baby-Dry, Dry Comfort'},
+  Pants: {ic: '🩲', col: 't-pants', word: 'Pants', sizes: [['M', 'Medium', '6–11 kg'], ['L', 'Large', '9–14 kg'], ['XL', 'Extra Large', '12–17 kg'], ['XXL', 'XX Large', '15–25 kg'], ['XXXL', 'XXX Large', '20 kg +']], pcs: [20, 26, 32, 36, 40, 44, 48, 52], expT: false, lineEg: 'e.g. Pull-Ups, Easy Pants'},
+  Wipes: {ic: '💧', col: 't-wipes', word: 'Baby Wipes', sizes: [], pcs: [48, 56, 60, 64, 72, 80, 90, 100], expT: true, lineEg: 'e.g. Pure, Sensitive, Aloe'}};
+const BRANDS = ['Pampers', 'Huggies', 'Molfix', 'Softcare', 'Bebem', 'Kiddies', 'Dry Baby', 'Johnson\'s', 'Cussons Baby', 'Mama Love'];
+const brandList = () => [...new Set([...db.products.map(p => p.brand).filter(Boolean), ...BRANDS])].sort((a, b) => a.localeCompare(b));
+const ptypeOf = p => PTYPES[p.cat] ? p.cat : /wipe/i.test(p.cat || '') ? 'Wipes' : /pant/i.test(p.cat || '') ? 'Pants' : 'Diapers';
+function prodAutoName(t, line, size, pcs) { const T = PTYPES[t]; if (t === 'Wipes') return `${line ? line + ' ' : ''}Baby Wipes ${pcs || ''}`.trim();
+  const z = T.sizes.find(x => x[0] === size); return `${line ? line + ' ' : ''}${T.word} ${z ? z[1] + ' (' + z[0] + ')' : ''}`.trim(); }
+const lowOf = p => avail(p.id) <= (p.low || 0);
+VIEWS.products = () => { const tf = ui.tab.pt || 'All', list = db.products.filter(p => tf === 'All' || ptypeOf(p) === tf), cnt = t => db.products.filter(p => ptypeOf(p) === t).length;
+  return `${productInsights()}<div class="card"><div class="row" style="margin-bottom:12px;gap:10px"><button class="btn gold" data-act="editprod">＋ Add product</button>
+    <div class="seg ptseg" role="group" aria-label="Show">${['All', 'Diapers', 'Pants', 'Wipes'].map(t => `<button class="${tf === t ? 'on' : ''}" data-act="tab" data-g="pt" data-v="${t}" aria-pressed="${tf === t}">${t === 'All' ? 'All' : PTYPES[t].ic + ' ' + t} <small>${t === 'All' ? db.products.length : cnt(t)}</small></button>`).join('')}</div>
+    <span class="sp"></span><span class="hint">Prices are per pack unless marked carton.</span></div>
+  <div class="tw"><table><thead><tr><th>Product</th><th>Type · size</th><th class="num">Buying</th><th class="num">Selling</th><th class="num">Margin</th><th class="num">Wholesale</th><th class="num">Carton</th><th class="num">In stock</th><th>Alert at</th><th></th></tr></thead><tbody>
+  ${list.map(p => { const m = p.retail ? (p.retail - p.cost) / p.retail * 100 : 0, t = ptypeOf(p), a = avail(p.id);
+    return `<tr><td><b>${esc(p.brand)}</b> ${esc(p.name)}<div class="hint">${esc(p.sku)}${p.expT ? ' · expiry tracked' : ''}${p.active ? '' : ' · <span class="tag bad">inactive</span>'}</div></td>
+    <td><span class="ptag ${PTYPES[t].col}">${PTYPES[t].ic} ${t}</span> ${p.size && p.size !== '—' ? `<b>${esc(p.size)}</b>` : ''}<div class="hint">${p.packCount} pcs · ${cartonLabel(p)}</div></td>
+    <td class="num">${GHS(p.cost)}</td><td class="num"><b>${GHS(p.retail)}</b></td><td class="num"><span class="tag ${m < 0 ? 'bad' : m < 10 ? 'warn' : 'ok'}">${m.toFixed(1)}%</span></td>
+    <td class="num">${p.tierA ? GHS(p.tierA) + '<div class="hint">from ' + p.tierAMin + ' packs</div>' : '—'}</td><td class="num">${p.cartonPrice ? GHS(p.cartonPrice) : '—'}</td>
+    <td class="num"><span class="tag ${a <= 0 ? 'bad' : lowOf(p) ? 'warn' : 'ok'}">${a} pack${a === 1 ? '' : 's'}</span></td><td>${p.low ? `🔔 ${p.low} packs` : '<span class="hint">off</span>'}</td>
+    <td><button class="btn sm sec" data-act="editprod" data-id="${p.id}">Edit</button> <button class="btn sm sec" data-act="phist" data-id="${p.id}">History</button></td></tr>`; }).join('') || '<tr><td colspan="10" class="empty">No products of this type yet.</td></tr>'}</tbody></table></div></div>`; };
 function prodForm(id) {
-  const p = id ? P(id) : {brand: '', name: '', cat: 'Diapers', size: '', packCount: '', cartonPacks: 1, cost: 0, retail: 0, tierA: 0, tierAMin: 10, cartonPrice: 0, low: 12, expT: false, active: true};
-  const f = (k, l, v, t) => `<div><label class="f">${l}</label><input class="i" id="p-${k}" value="${esc(v)}" ${t ? `inputmode="${t}"` : ''}></div>`;
-  modal(id ? 'Edit ' + p.brand + ' ' + p.name : 'Add product', `<div class="grid g2">${f('brand', 'Brand', p.brand)}${f('name', 'Name (size/variant)', p.name)}
-    <div><label class="f">Category</label><select class="i" id="p-cat">${['Diapers', 'Pants', 'Wipes', 'Bundles', 'Other'].map(c => `<option ${p.cat === c ? 'selected' : ''}>${c}</option>`).join('')}</select></div>${f('size', 'Size label', p.size)}
-    ${f('packCount', 'Pieces per pack', p.packCount, 'numeric')}${f('cartonPacks', 'Packs per carton (1 = none)', p.cartonPacks, 'numeric')}
-    ${f('cost', 'Cost per pack (GH₵)' + (id ? ' — updated by deliveries' : ''), p2s(p.cost), 'decimal')}${f('retail', 'Retail price per pack (GH₵)', p2s(p.retail), 'decimal')}
-    ${f('tierA', 'Tier A price per pack (GH₵, optional)', p.tierA ? p2s(p.tierA) : '', 'decimal')}${f('tierAMin', 'Tier A from how many packs', p.tierAMin, 'numeric')}
-    ${f('cartonPrice', 'Carton price (GH₵, optional)', p.cartonPrice ? p2s(p.cartonPrice) : '', 'decimal')}${f('low', 'Low-stock alert at (packs)', p.low, 'numeric')}
-    <div><label class="f">Track expiry dates</label><select class="i" id="p-expT"><option value="0">No</option><option value="1" ${p.expT ? 'selected' : ''}>Yes (wipes)</option></select></div>
-    <div><label class="f">Status</label><select class="i" id="p-active"><option value="1">Active</option><option value="0" ${p.active ? '' : 'selected'}>Inactive (hidden from sale)</option></select></div></div>
-    <label class="f">Reason for price change (required if prices change)</label><input class="i" id="p-why"><div class="err" id="p-err"></div>`,
-    `<button class="btn sec" data-act="close">Cancel</button><button class="btn" data-act="saveprod" data-id="${id || ''}">Save</button>`, true);
+  const p = id ? P(id) : {brand: '', name: '', cat: 'Diapers', size: 'M', packCount: '', cartonPacks: 1, cost: 0, retail: 0, tierA: 0, tierAMin: 10, cartonPrice: 0, low: 12, expT: false, active: true, line: ''};
+  const t0 = ptypeOf(p), brands = brandList(), knownB = !p.brand || brands.includes(p.brand), la = db.settings.lowAlert || {}, smsIt = (db.integrations || []).find(i => i.enabled && i.kind === 'sms');
+  const money = (k, l, v, ph) => `<div><label class="f" for="p-${k}">${l}</label><div class="pf-gh"><span>GH₵</span><input class="i" id="p-${k}" inputmode="decimal" value="${v ? p2s(v) : ''}" placeholder="${ph || '0.00'}"></div></div>`;
+  modal(id ? 'Edit product' : 'Add product', `<div class="pf" data-t="${t0}">
+    <div class="pf-types" role="radiogroup" aria-label="Product type">${Object.entries(PTYPES).map(([t, T]) => `<button type="button" class="pf-type ${T.col} ${t === t0 ? 'on' : ''}" data-t="${t}" role="radio" aria-checked="${t === t0}"><span aria-hidden="true">${T.ic}</span><b>${t}</b></button>`).join('')}</div><input type="hidden" id="p-cat" value="${t0}">
+    <div class="pf-grid">
+     <div class="pf-main">
+      <section class="pf-sec"><h4>Product</h4><div class="pf-r">
+        <div><label class="f" for="p-brandsel">Brand</label><select class="i" id="p-brandsel"><option value="" ${p.brand ? '' : 'selected'} disabled>Choose a brand…</option>${brands.map(b => `<option ${p.brand === b ? 'selected' : ''}>${esc(b)}</option>`).join('')}<option value="__new" ${knownB ? '' : 'selected'}>＋ Another brand…</option></select>
+          <input class="i" id="p-brandnew" placeholder="Type the brand name" value="${knownB ? '' : esc(p.brand)}" ${knownB ? 'hidden' : ''} style="margin-top:6px"><input type="hidden" id="p-brand" value="${esc(p.brand)}"></div>
+        <div><label class="f" for="p-line">Product line <span class="hint">(optional)</span></label><input class="i" id="p-line" value="${esc(p.line || '')}" placeholder=""></div></div>
+       <div class="pf-only pf-size"><label class="f">Size</label><div class="pf-sizes" role="radiogroup" aria-label="Size" id="p-sizes"></div><input type="hidden" id="p-size" value="${esc(p.size || '')}"></div>
+       <div class="pf-r"><div><label class="f" for="p-packCount" id="p-pcl">Pieces per pack</label><input class="i" id="p-packCount" inputmode="numeric" value="${esc(p.packCount)}" list="p-pcs"><datalist id="p-pcs"></datalist></div>
+        <div><label class="f" for="p-cartonPacks">Packs per carton <span class="hint">(1 = sold as packs only)</span></label><input class="i" id="p-cartonPacks" inputmode="numeric" value="${esc(p.cartonPacks)}"></div></div>
+       <div class="pf-only pf-wipes pf-r"><div><label class="f" for="p-scent">Fragrance</label><select class="i" id="p-scent"><option value="free" ${p.scent !== 'scented' ? 'selected' : ''}>Fragrance-free</option><option value="scented" ${p.scent === 'scented' ? 'selected' : ''}>Scented</option></select></div>
+        <div><label class="f" for="p-alc">Alcohol</label><select class="i" id="p-alc"><option value="1" ${p.alcoholFree !== false ? 'selected' : ''}>Alcohol-free</option><option value="0" ${p.alcoholFree === false ? 'selected' : ''}>Contains alcohol</option></select></div></div>
+       <div class="pf-r"><div><label class="f" for="p-name">Name on receipts and the till</label><input class="i" id="p-name" value="${esc(p.name)}"><div class="hint" id="p-namehint">Filled in for you — change it if you like.</div></div>
+        <div><label class="f" for="p-expT">Expiry dates</label><select class="i" id="p-expT"><option value="0">Not tracked</option><option value="1" ${p.expT ? 'selected' : ''}>Track expiry (first to expire sells first)</option></select></div></div></section>
+      <section class="pf-sec"><h4>Prices per pack</h4><div class="pf-r">${money('cost', 'Buying price' + (id ? ' <span class="hint">(updated by deliveries)</span>' : ''), p.cost)}${money('retail', 'Selling price', p.retail)}</div>
+        <div class="pf-margin" id="p-margin" aria-live="polite"></div>
+        <div class="pf-r3">${money('tierA', 'Wholesale price <span class="hint">(optional)</span>', p.tierA)}<div><label class="f" for="p-tierAMin">…from how many packs</label><input class="i" id="p-tierAMin" inputmode="numeric" value="${esc(p.tierAMin)}"></div>${money('cartonPrice', 'Carton price <span class="hint">(optional)</span>', p.cartonPrice)}</div>
+        ${id ? '<label class="f" for="p-why">Reason for the price change <span class="hint">(needed only if a price changes)</span></label><input class="i" id="p-why" placeholder="e.g. Supplier raised prices">' : '<input type="hidden" id="p-why" value="">'}</section>
+      <section class="pf-sec pf-alert"><h4>🔔 Low-stock alert</h4><div class="pf-r"><div><label class="f" for="p-low">Alert me when stock falls to</label><div class="pf-gh pf-u"><input class="i" id="p-low" inputmode="numeric" value="${esc(p.low)}"><span>packs</span></div><div class="hint">0 turns the alert off for this product.</div></div>
+        <div><span class="f">How to tell me <span class="hint">(all products)</span></span>
+          <label class="pf-ck"><input type="checkbox" checked disabled> Bell and dashboard</label>
+          <label class="pf-ck"><input type="checkbox" id="la-push" ${la.push ? 'checked' : ''}> Pop-up on this device</label>
+          <label class="pf-ck"><input type="checkbox" id="la-sms" ${la.sms ? 'checked' : ''} ${smsIt ? '' : 'disabled'}> SMS to <input class="i pf-tiny" id="la-phone" value="${esc(la.phone ? dispPhone(la.phone) : (db.settings.phone1 || ''))}" ${smsIt ? '' : 'disabled'}></label>
+          ${smsIt ? '' : '<div class="hint">Connect an SMS gateway in Settings → Integrations to get SMS alerts.</div>'}</div></div>
+        <label class="f" for="p-active">Status</label><select class="i" id="p-active" style="max-width:320px"><option value="1">Active — on sale</option><option value="0" ${p.active ? '' : 'selected'}>Inactive — hidden from the till</option></select></section>
+     </div>
+     <aside class="pf-side"><div class="pf-prevlab">Preview on the till</div><div class="pgrid pf-prev" id="p-prev"></div><div class="pf-tip" id="p-tip"></div></aside>
+    </div><div class="err" id="p-err" role="alert"></div></div>`,
+    `<button class="btn sec" data-act="close">Cancel</button><button class="btn gold" data-act="saveprod" data-id="${id || ''}">${id ? 'Save changes' : '✓ Add product'}</button>`, true);
+  const root = $('#modal-root .pf'), nm = $('#p-name'); let nameTouched = !!id && nm.value !== prodAutoName(t0, p.line || '', p.size, p.packCount);
+  const T = () => PTYPES[$('#p-cat').value], val = k => $('#p-' + k).value.trim();
+  const sizes = () => { const t = T(), cur0 = $('#p-size').value; if (!t.sizes.length) { $('#p-size').value = '—'; return; } if (!t.sizes.some(z => z[0] === cur0)) $('#p-size').value = t.sizes[Math.min(2, t.sizes.length - 1)][0];
+    $('#p-sizes').innerHTML = t.sizes.map(([z, n, w]) => `<button type="button" class="pf-sz ${$('#p-size').value === z ? 'on' : ''}" data-z="${z}" role="radio" aria-checked="${$('#p-size').value === z}"><b>${z}</b><small>${w}</small></button>`).join(''); };
+  const upd = () => { const t = $('#p-cat').value, TT = PTYPES[t]; root.dataset.t = t; $('#p-line').placeholder = TT.lineEg; $('#p-pcl').textContent = t === 'Wipes' ? 'Wipes per pack' : 'Pieces per pack';
+    $('#p-pcs').innerHTML = TT.pcs.map(n => `<option value="${n}">`).join('');
+    if (!nameTouched) nm.value = prodAutoName(t, val('line'), $('#p-size').value, val('packCount'));
+    const cost = toP(val('cost')), ret = toP(val('retail')), ta = toP(val('tierA')), cp = toP(val('cartonPrice')), cpk = Math.max(1, parseInt(val('cartonPacks')) || 1);
+    const chip = (l, sell) => { if (!sell) return ''; const g = sell - cost, m = sell ? g / sell * 100 : 0; return `<span class="pf-mc ${g < 0 ? 'bad' : m < 10 ? 'warn' : 'ok'}">${l}: <b>${GHS(g)}</b> profit · ${m.toFixed(1)}%</span>`; };
+    $('#p-margin').innerHTML = cost || ret ? chip('Selling', ret) + chip('Wholesale', ta) + (cp && cpk > 1 ? chip('Carton, per pack', Math.round(cp / cpk)) : '') + (ret && ret < cost ? '<span class="pf-mc bad">Below the buying price — the owner must approve</span>' : '') : '<span class="hint">Enter the buying and selling prices to see the profit per pack.</span>';
+    const b = val('brand') || 'Brand', fake = {id: '_prev', brand: b, name: nm.value || '—', size: t === 'Wipes' ? '—' : $('#p-size').value, packCount: parseInt(val('packCount')) || 0, retail: ret, tierA: ta, tierAMin: parseInt(val('tierAMin')) || 0};
+    $('#p-prev').innerHTML = `<div class="pc ${TT.col}" aria-hidden="true"><span class="pc-top"><span class="pc-ic">${TT.ic}</span><span class="b">${esc(b)}</span><span class="pc-sz ${t === 'Wipes' ? 'wp' : ''}">${t === 'Wipes' ? (fake.packCount || '—') : esc(fake.size)}</span></span><span class="pc-bd"><span class="n">${esc(fake.name)}</span><span class="st"><span class="chipx">${fake.packCount || 0} pcs</span>${t === 'Wipes' ? `<span class="chipx">${$('#p-scent').value === 'scented' ? 'Scented' : 'Fragrance-free'}</span>` : ''}</span>${ta ? `<span class="pc-tier">Wholesale <b>${GHS(ta)}</b> from ${fake.tierAMin} packs</span>` : ''}</span><span class="pc-ft"><span class="pr">${GHS(ret)}</span><span class="pc-add">+</span></span></div>`;
+    const z = TT.sizes.find(x => x[0] === $('#p-size').value);
+    $('#p-tip').innerHTML = t === 'Wipes' ? '💧 Wipes have no size. Expiry is tracked so the oldest packs sell first.' : z ? `${TT.ic} Size <b>${z[0]}</b> · ${z[1]} · for babies ${z[2]}.` : ''; };
+  const setType = t => { $('#p-cat').value = t; root.querySelectorAll('.pf-type').forEach(b => { const on = b.dataset.t === t; b.classList.toggle('on', on); b.setAttribute('aria-checked', on); }); if (!id) $('#p-expT').value = PTYPES[t].expT ? '1' : '0'; sizes(); upd(); };
+  root.addEventListener('click', e => { const tb = e.target.closest('.pf-type'); if (tb) return setType(tb.dataset.t);
+    const zb = e.target.closest('.pf-sz'); if (zb) { $('#p-size').value = zb.dataset.z; sizes(); upd(); } });
+  $('#p-brandsel').onchange = e => { const nw = e.target.value === '__new'; $('#p-brandnew').hidden = !nw; $('#p-brand').value = nw ? $('#p-brandnew').value.trim() : e.target.value; if (nw) $('#p-brandnew').focus(); upd(); };
+  $('#p-brandnew').oninput = e => { $('#p-brand').value = e.target.value.trim(); upd(); };
+  nm.oninput = () => { nameTouched = !!nm.value.trim(); upd(); };
+  root.addEventListener('input', e => { if (e.target !== nm && e.target.id !== 'p-brandnew') upd(); }); root.addEventListener('change', () => upd());
+  $('#la-push').onchange = async e => { if (e.target.checked && 'Notification' in window && Notification.permission === 'default') { try { await Notification.requestPermission(); } catch (x) {} }
+    if (e.target.checked && (!('Notification' in window) || Notification.permission === 'denied')) toast('This browser or view does not allow pop-ups — the bell will still show the alert.', true); };
+  sizes(); upd();
 }
 async function saveProd(id) {
   const err = m => $('#p-err').textContent = m; const v = k => $('#p-' + k).value.trim();
-  const n = {brand: v('brand'), name: v('name'), cat: v('cat'), size: v('size') || '—', packCount: parseInt(v('packCount')) || 0, cartonPacks: Math.max(1, parseInt(v('cartonPacks')) || 1), cost: toP(v('cost')), retail: toP(v('retail')), tierA: toP(v('tierA')), tierAMin: Math.max(1, parseInt(v('tierAMin')) || 1), cartonPrice: toP(v('cartonPrice')), low: parseInt(v('low')) || 0, expT: v('expT') === '1', active: v('active') === '1'};
-  if (!n.brand || !n.name) return err('Enter brand and name.'); if (!n.retail) return err('Enter the retail price.');
+  const n = {brand: v('brand'), name: v('name'), cat: v('cat'), size: v('cat') === 'Wipes' ? '—' : (v('size') || '—'), line: v('line'), scent: v('cat') === 'Wipes' ? v('scent') : undefined, alcoholFree: v('cat') === 'Wipes' ? v('alc') === '1' : undefined, packCount: parseInt(v('packCount')) || 0, cartonPacks: Math.max(1, parseInt(v('cartonPacks')) || 1), cost: toP(v('cost')), retail: toP(v('retail')), tierA: toP(v('tierA')), tierAMin: Math.max(1, parseInt(v('tierAMin')) || 1), cartonPrice: toP(v('cartonPrice')), low: parseInt(v('low')) || 0, expT: v('expT') === '1', active: v('active') === '1'};
+  if (!n.brand) return err('Choose a brand, or choose “Another brand” and type it.'); if (!n.name) return err('Enter the name shown on receipts.'); if (!n.packCount) return err(n.cat === 'Wipes' ? 'Enter how many wipes are in a pack.' : 'Enter how many pieces are in a pack.');
+  if (!n.retail) return err('Enter the selling price.'); if (n.tierA && n.tierA > n.retail) return err('The wholesale price should not be higher than the selling price.');
+  const laPhone = $('#la-phone').value.trim(); if ($('#la-sms').checked && !normPhone(laPhone)) return err('Enter a valid phone number for SMS stock alerts.');
+  db.settings.lowAlert = {push: $('#la-push').checked, sms: $('#la-sms').checked, phone: normPhone(laPhone) || ''};
   if (n.cartonPacks > 1 && n.cartonPrice && n.cartonPrice > n.retail * n.cartonPacks) return err('Carton price is higher than buying the packs one by one.');
   const below = [['retail', n.retail], ['tier A', n.tierA], ['carton (per pack)', n.cartonPrice ? Math.round(n.cartonPrice / n.cartonPacks) : 0]].filter(([, x]) => x && x < n.cost);
   if (below.length && !isOwner()) { const ap = await requirePin(['owner'], `Price below cost (${below.map(b => b[0]).join(', ')}). Owner must approve a loss-making price.`); if (!ap) return err('Below-cost price not approved.'); }
@@ -1876,7 +1979,7 @@ async function saveProd(id) {
   if (changed.length && !v('why')) return err('Enter the reason for the price change.');
   if (p) { for (const k of changed) db.priceHistory.push({id: uid(), pid: p.id, field: k, old: p[k], new: n[k], ts: Date.now(), staff: cur.id, why: v('why')}); Object.assign(p, n); audit('product.edit', `${p.sku} ${changed.length ? 'prices: ' + changed.join(',') : ''}`); }
   else { const np = {id: uid(), sku: 'SKU-' + String(db.products.length + 1).padStart(3, '0'), ...n}; db.products.push(np); db.lots.push({id: uid(), pid: np.id, qty: 0, exp: null, batch: '-', recv: Date.now()}); audit('product.create', np.sku + ' ' + n.brand + ' ' + n.name); }
-  save(); closeModal(); render(); toast('Product saved.');
+  (p || db.products[db.products.length - 1]).lowSent = !p; save(); closeModal(); render(); toast('Product saved.'); checkLowStock();
 }
 
 // Customers
@@ -2509,7 +2612,7 @@ async function readLogo(file) {
 function greeting() { const h = new Date().getHours(); return h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : 'Good evening'; }
 // Same items as the dashboard's "Needs attention" list, counted for the bell.
 function alertCount() { const ws = db.customers.filter(c => c.type === 'wholesale');
-  return (can('sell') && !openShift(cur.id) ? 1 : 0) + (pendingMomo() ? 1 : 0) + (db.lots.some(l => l.qty > 0 && isExpired(l)) ? 1 : 0) + (db.lots.some(l => l.qty > 0 && nearExp(l)) ? 1 : 0) + (ws.some(c => balance(c.id) > 0 && overdueDays(c.id) > 0) ? 1 : 0); }
+  return (db.products.some(p => p.active && p.low && lowOf(p)) ? 1 : 0) + (can('sell') && !openShift(cur.id) ? 1 : 0) + (pendingMomo() ? 1 : 0) + (db.lots.some(l => l.qty > 0 && isExpired(l)) ? 1 : 0) + (db.lots.some(l => l.qty > 0 && nearExp(l)) ? 1 : 0) + (ws.some(c => balance(c.id) > 0 && overdueDays(c.id) > 0) ? 1 : 0); }
 function clockText() { return new Date().toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit', second: '2-digit'}).replace(/:/g, ' : '); }
 setInterval(() => { const c = document.getElementById('clk'); if (c) c.textContent = clockText(); }, 1000);
 let rsz; window.addEventListener('resize', () => { clearTimeout(rsz); rsz = setTimeout(() => { if (cur && ui.route === 'dashboard' && !$('#modal-root').innerHTML) render(); }, 200); });
