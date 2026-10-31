@@ -183,6 +183,41 @@ td.sn .snn{display:inline-block;min-width:1.4em}td.sn input,th.sn input{width:16
 .cv-stats.onerow{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;padding:5px 5px 7px;margin:8px -5px 6px;scrollbar-width:thin;scroll-snap-type:x proximity}
 .cv-stats.onerow>.cv-stat{flex:1 1 0;min-width:150px;scroll-snap-align:start}.cv-stats.onerow .cv-stat span{font-size:10.5px;letter-spacing:.03em}
 @media (max-width:640px){.cv-stats.onerow>.cv-stat{flex:0 0 46%;min-width:0}}
+.shiftnote{display:inline-flex;align-items:center;gap:10px;margin-left:14px;padding:4px 6px 4px 14px;border-radius:999px;background:#FFF6E5;border:1px solid #F0C979;color:#7A3A07;font-size:13.5px;flex-wrap:wrap}.shiftnote .dot{width:9px;height:9px;border-radius:50%;background:var(--warn,#B45309);box-shadow:0 0 0 3px rgba(180,83,9,.18)}.shiftnote .btn{border-radius:999px}
+@media (max-width:640px){.top{flex-wrap:wrap}.shiftnote{order:9;flex:1 1 100%;justify-content:space-between;margin:8px 0 0;font-size:12.5px;border-radius:16px;padding:6px 6px 6px 12px}.shiftnote b{flex:1}}
+.md.wide:has(.rg){max-width:760px}
+.md:has(.rg)>header{position:sticky;top:-5vh;z-index:3}.md:has(.rg)>footer{position:sticky;bottom:-5vh;z-index:3;background:#fff;border-radius:0 0 12px 12px;box-shadow:0 -8px 16px rgba(11,26,46,.08);padding-bottom:calc(12px + 5vh);margin-bottom:-5vh}
+.rg{display:flex;flex-direction:column;gap:14px}
+.rg-hero{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:20px;color:#fff;background:linear-gradient(135deg,var(--bb3,#2C4772),var(--bb) 70%);box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 6px 16px rgba(11,26,46,.22);flex-wrap:wrap}
+.rg-av{width:54px;height:54px;flex:0 0 54px;border-radius:50%;display:grid;place-items:center;font-size:24px;font-weight:800;color:#0B1A2E;background:linear-gradient(180deg,#F3DD8E,var(--gold) 60%,#A8861F);box-shadow:inset 0 1px 1px rgba(255,255,255,.7),0 3px 8px rgba(0,0,0,.35)}
+.rg-hid{flex:1;min-width:160px}.rg-nm{font-size:19px;font-weight:800;line-height:1.2}.rg-sub{font-size:13px;opacity:.85;margin-top:2px}
+.rg-tag{font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25)}
+.rg-sec{padding:14px 16px 16px;border-radius:18px;background:#fff;box-shadow:0 0 0 1px var(--line,#E2E7EE),0 3px 10px rgba(11,26,46,.05)}
+.rg-sec h4{display:flex;align-items:center;gap:10px;margin:0 0 6px;font-size:15px;color:var(--bb)}.rg-sec .f:first-child{margin-top:4px}
+.rg-n{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:800;color:#fff;background:var(--bb)}
+.rg-ph{display:flex;align-items:stretch;border-radius:12px;overflow:hidden;box-shadow:0 0 0 1px var(--line,#CBD3DE)}.rg-ph>span{display:flex;align-items:center;padding:0 10px;font-size:13px;font-weight:600;background:#F1F4F8;color:#3A4658;white-space:nowrap}.rg-ph .i{border:0;border-radius:0;box-shadow:none;flex:1;min-width:0}
+.rg-net{min-height:18px;margin-top:5px;font-size:12.5px}.rg-net .ok{color:#14632F;font-weight:600}.rg-net .no{color:#9B1C1C}
+.rg-types{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+.rg-type{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:10px;align-items:center;text-align:left;padding:12px 14px;border-radius:16px;border:2px solid var(--line,#DCE3EC);background:#F8FAFD;cursor:pointer;font:inherit;color:inherit;transition:border-color .15s,box-shadow .15s,transform .15s}
+.rg-type .rg-ti{grid-row:1/3;font-size:24px;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#fff;box-shadow:0 0 0 1px #E2E7EE}.rg-type b{font-size:15px}.rg-type small{font-size:12px;color:var(--muted);line-height:1.3}
+.rg-type:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(11,26,46,.1)}.rg-type.on{border-color:var(--bb);background:#fff;box-shadow:0 0 0 3px rgba(212,175,55,.45)}.rg-type.on .rg-ti{background:var(--bb);box-shadow:none}
+.rg-type:focus-visible,.rg-yn button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.rg-ws{margin-top:10px;padding:10px 12px;border-radius:14px;background:#FFF9E6;border:1px solid #F0DC9A}
+.rg-quote{position:relative;margin:8px 0 12px;padding:12px 14px 12px 16px;border-radius:14px;background:#F3F6FB;border-left:4px solid var(--gold);font-style:italic;line-height:1.45}.rg-quote span{display:block;font-style:normal;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.rg-chs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px}
+.rg-ch{padding:12px;border-radius:16px;border:2px solid var(--line,#DCE3EC);background:#fff;transition:border-color .15s,background .15s}.rg-ch.yes{border-color:#2E9E5B;background:#F2FBF5}.rg-ch.no{border-color:#E3A3A3;background:#FFF7F7}
+.rg-ch-h{display:flex;align-items:center;gap:8px;margin-bottom:10px}.rg-ci{font-size:18px}.rg-st{margin-left:auto;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;background:#EEF2F7;color:#5B6575}.rg-st.ok{background:#DDF3E5;color:#14632F}.rg-st.no{background:#FBE1E1;color:#9B1C1C}
+.rg-yn{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px;border-radius:999px;background:#EEF2F7}.rg-yn button{border:0;border-radius:999px;padding:8px 6px;font:inherit;font-weight:700;font-size:13.5px;background:transparent;color:#3A4658;cursor:pointer}
+.rg-yn button[data-v=opted_in][aria-pressed=true]{background:#15803D;color:#fff;box-shadow:0 2px 6px rgba(21,128,61,.35)}.rg-yn button[data-v=withdrawn][aria-pressed=true]{background:#B91C1C;color:#fff;box-shadow:0 2px 6px rgba(185,28,28,.3)}
+.rg-wel,.rg-wels{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.rg-wl{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:#F3F6FB;border:1px solid #E2E7EE;font-size:13.5px;flex-wrap:wrap}.rg-wl>b{min-width:78px}.rg-wl>span:nth-child(3){flex:1;min-width:170px;color:#3A4658}
+.rg-wl.auto{background:#EEF6FF;border-color:#BFD3EE}.rg-wl.auto.sent,.rg-wl.sent{background:#F2FBF5;border-color:#BFE3CB}.rg-wl.manual{background:#FFF9E6;border-color:#F0DC9A}.rg-wl.no{opacity:.75}.rg-wl .btn{margin-left:auto}
+.rg-msg{margin-top:12px;padding:12px;border-radius:16px;background:#F6F8FB;border:1px solid #E2E7EE}.rg-mh{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}.rg-mh b{color:var(--bb)}
+.rg-editor{margin-top:10px;padding-top:10px;border-top:1px dashed #CBD3DE}.rg-editor textarea{width:100%;resize:vertical;line-height:1.45}.rg-ins{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:6px}.rg-ins .chip{cursor:pointer;font-weight:600}
+.rg-prev{margin-top:10px}.rg-prev summary{cursor:pointer;font-weight:600;color:var(--bb)}.rg-bubble{margin-top:0;max-width:520px;padding:10px 14px;border-radius:16px 16px 16px 4px;background:#DCF8C6;box-shadow:0 1px 2px rgba(0,0,0,.12);white-space:pre-wrap;font-size:13.5px;line-height:1.45}
+.rg-done{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:16px;background:#F2FBF5;border:1px solid #BFE3CB}.rg-ok{width:46px;height:46px;flex:0 0 46px;border-radius:50%;display:grid;place-items:center;font-size:24px;font-weight:800;color:#fff;background:#15803D;box-shadow:0 3px 8px rgba(21,128,61,.35)}.rg-h{margin:16px 0 4px;color:var(--bb)}
+.wlset{margin-top:14px;border-top:4px solid var(--gold)}.wlset h3{margin-bottom:4px}.wl-row{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;margin:8px 0;border-radius:14px;background:#F6F8FB;border:1px solid #E2E7EE;cursor:pointer}.wl-row input{margin-top:4px}.wl-ic{font-size:18px}.wl-row small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+@media (max-width:640px){.rg-types,.rg-chs{grid-template-columns:1fr}.rg-hero{padding:12px}.rg-sec{padding:12px}}
 .topr{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin-left:auto}.decorchip{cursor:pointer;gap:6px;font-weight:600;color:var(--bb);background:#fff}.decorchip input{margin:0;accent-color:var(--bb)}
 .decor-row{display:flex;justify-content:flex-end;margin:2px 0 -6px}.decor-row label{display:inline-flex;align-items:center;gap:6px;cursor:pointer}.decor-row+.cv-stats{margin-top:10px}
 .cv-stats.flat .cv-stat[class*=" c-"]{background:var(--b);box-shadow:none}.cv-stats.flat .cv-stat[class*=" c-"]::before{display:none}.cv-stats.flat .cv-stat span,.cv-stats.flat .cv-stat small{text-shadow:none}.cv-stats.flat .cv-stat{border-radius:14px}
@@ -250,14 +285,35 @@ input.i:focus,select.i:focus,textarea.i:focus{outline:2px solid var(--gold);outl
   box-shadow:inset 0 -4px 8px rgba(0,0,0,.3),0 0 0 2px var(--gold),0 3px 8px rgba(11,26,46,.3)}
 /* POS */
 .pos{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:14px;align-items:start}
-.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
-.pc{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:4px;min-height:118px}
-.pc:hover{border-color:var(--bb);box-shadow:var(--sh)}
-.pc .b{font-size:11px;color:var(--muted);text-transform:uppercase}
-.pc .n{font-weight:600;font-size:14px;line-height:1.25}
-.pc .pr{margin-top:auto;font-weight:700;color:var(--bb);font-size:16px}
-.pc .st{font-size:12px}
-.pc.out{opacity:.5}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(178px,1fr));gap:16px 14px;padding:4px 2px 10px}
+.pc{--h1:#2C4772;--h2:#16294A;--h3:#0B1A2E;position:relative;display:flex;flex-direction:column;padding:0;border:0;border-radius:18px;background:linear-gradient(180deg,#FFFFFF 0%,#F4F7FB 100%);cursor:pointer;text-align:left;font:inherit;color:var(--ink,#1A2233);overflow:hidden;
+  box-shadow:0 1px 0 #fff inset,0 0 0 1px #D9E0EA,0 6px 0 -2px #C9D3E0,0 10px 18px rgba(11,26,46,.16);transform:translateY(0);transition:transform .16s ease,box-shadow .16s ease}
+.pc.t-pants{--h1:#7A4FB8;--h2:#5B3A99;--h3:#3F2670}.pc.t-wipes{--h1:#1E8A8A;--h2:#136E6E;--h3:#0B4D4D}
+.pc:hover{transform:translateY(-4px);box-shadow:0 1px 0 #fff inset,0 0 0 1px #C3CEDD,0 10px 0 -3px #C9D3E0,0 18px 28px rgba(11,26,46,.22)}
+.pc:active{transform:translateY(1px) scale(.985);box-shadow:0 0 0 1px #C3CEDD,0 3px 0 -1px #C9D3E0,0 5px 10px rgba(11,26,46,.18)}
+.pc:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.pc-top{position:relative;display:flex;align-items:center;gap:8px;padding:11px 12px 12px;color:#fff;background:linear-gradient(180deg,var(--h1),var(--h2) 55%,var(--h3));box-shadow:inset 0 -6px 10px rgba(0,0,0,.22)}
+.pc-top::before{content:"";position:absolute;left:8%;right:8%;top:3px;height:42%;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.38),rgba(255,255,255,0));pointer-events:none}
+.pc-ic{position:relative;width:30px;height:30px;flex:0 0 30px;border-radius:50%;display:grid;place-items:center;font-size:16px;background:rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+.pc .b{position:relative;flex:1;min-width:0;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 2px rgba(0,0,0,.4)}
+.pc-sz{position:relative;min-width:34px;height:34px;padding:0 6px;border-radius:999px;display:grid;place-items:center;font-weight:800;font-size:13px;color:#0B1A2E;background:linear-gradient(180deg,#F3DD8E,#D4AF37 60%,#A8861F);box-shadow:inset 0 1px 1px rgba(255,255,255,.7),0 2px 4px rgba(0,0,0,.3)}
+.pc-sz.wp{font-size:11.5px}
+.pc-q{position:absolute;top:-1px;right:-1px;min-width:24px;height:24px;padding:0 7px;border-radius:0 18px 0 12px;display:grid;place-items:center;font-size:12px;font-weight:800;background:#15803D;color:#fff;box-shadow:0 2px 4px rgba(0,0,0,.3)}
+.pc-bd{display:flex;flex-direction:column;gap:7px;padding:11px 12px 8px;flex:1}
+.pc .n{font-weight:700;font-size:15px;line-height:1.25;color:var(--bb)}
+.pc .st{display:flex;flex-wrap:wrap;gap:5px}
+.chipx{display:inline-flex;align-items:center;font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px;background:#EEF2F7;color:#3A4658;border:1px solid #DCE3EC}
+.chipx.s-ok{background:#E9F6EE;color:#14632F;border-color:#BFE3CB}.chipx.s-low{background:#FFF3E0;color:#8A4A06;border-color:#F3CF9A}.chipx.s-out{background:#FDECEC;color:#9B1C1C;border-color:#F3C0C0}.chipx.s-exp{background:#FFF8DD;color:#7A5B00;border-color:#EDD98A}
+.pc-tier{font-size:11.5px;color:var(--muted);line-height:1.3}.pc-tier b{color:#3A4658}
+.pc-ft{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 8px 9px;padding:7px 7px 7px 14px;border-radius:999px;background:linear-gradient(180deg,#F8FAFD,#E8EDF4);box-shadow:inset 0 1px 0 #fff,0 0 0 1px #D3DAE4}
+.pc .pr{font-weight:800;font-size:17px;color:var(--bb);letter-spacing:-.01em}
+.pc-add{width:30px;height:30px;flex:0 0 30px;border-radius:50%;display:grid;place-items:center;font-size:20px;font-weight:700;line-height:1;color:#0B1A2E;background:linear-gradient(180deg,#F3DD8E,#D4AF37 60%,#A8861F);box-shadow:inset 0 1px 1px rgba(255,255,255,.7),0 2px 4px rgba(11,26,46,.3);transition:transform .16s}
+.pc:hover .pc-add{transform:rotate(90deg) scale(1.08)}
+.pc.incart{box-shadow:0 0 0 2px #15803D,0 6px 0 -2px #C9D3E0,0 10px 18px rgba(11,26,46,.16)}
+.pc.out{cursor:not-allowed;filter:grayscale(.85);opacity:.6}.pc.out:hover{transform:none}
+.pgrid.flat .pc{box-shadow:0 0 0 1px #D3DAE4;transform:none}.pgrid.flat .pc:hover{box-shadow:0 0 0 1px var(--bb),0 4px 10px rgba(11,26,46,.12)}.pgrid.flat .pc-top{background:var(--h2);box-shadow:none}.pgrid.flat .pc-top::before{display:none}.pgrid.flat .pc-ft{background:#F1F4F8;box-shadow:none}
+@media (max-width:640px){.pgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 10px}.pc .n{font-size:14px}.pc .pr{font-size:15.5px}.pc-ft{padding-left:10px}.pc-add{width:26px;height:26px;flex-basis:26px;font-size:17px}.pc-ic{display:none}}
+@media (prefers-reduced-motion:reduce){.pc,.pc-add{transition:none}.pc:hover{transform:none}}
 .cart{position:sticky;top:70px}
 .cl{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 8px;padding:10px 0;border-bottom:1px solid var(--line)}
 .cl .row{flex-wrap:wrap;gap:6px}
@@ -809,14 +865,14 @@ function hdrHTML(title, pm, online) { return `<div class="hdr"><div class="ghstr
       <div class="hl">${(() => { const sh = openShift(cur.id); return `<button class="shiftpill ${sh ? '' : 'closed'}" data-act="go" data-r="shifts" aria-label="Cash shift: ${sh ? 'open' : 'closed'}. Open Cash shifts"><span class="ld" aria-hidden="true"></span><span><b>${sh ? 'Shift open' : 'Shift closed'}</b><small>${sh ? 'since ' + new Date(sh.openTs).toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'}) : 'tap to open'}</small></span></button>`; })()}
         <div class="clock" aria-hidden="true"><b id="clk">${clockText()}</b><span id="clkd">${new Date().toLocaleDateString('en-GB', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'})}</span></div></div>
       <div class="namecap"><h2 class="disp">${esc(db.settings.name)}</h2><p><span class="tg">“${esc(db.settings.tagline)}” · </span><span class="pn"><b>${esc(productName())}</b> · </span>${esc(db.settings.location)}</p></div>
-      <div class="hr">${(() => { const waT = db.msgs.filter(m => m.ts >= Date.parse(today())).length, al = alertCount();
+      <div class="hr">${(() => { const waT = db.msgs.filter(m => m.ts >= Date.parse(today()) && (m.ch || 'whatsapp') === 'whatsapp').length, al = alertCount();
         return `${navOk(['momo', '', '', 'verify_momo']) ? `<button class="spill" data-act="go" data-r="momo" aria-label="${pm} MoMo payment${pm === 1 ? '' : 's'} to verify"><span class="ic" aria-hidden="true">📱</span><span><b>${pm}</b><small>MoMo</small></span>${pm ? `<span class="bd" aria-hidden="true">${pm}</span>` : ''}</button>` : ''}
         <button class="spill wa" data-act="go" data-r="customers" aria-label="${waT} WhatsApp message${waT === 1 ? '' : 's'} sent today"><span class="ic" aria-hidden="true">💬</span><span><b>${waT}</b><small>WhatsApp</small></span></button>
         <span class="spill ${online ? '' : 'off'}" role="status" aria-label="${online ? 'Online' : 'Offline'}, ${STORE_OK ? 'data saved on this device' : 'this view cannot save data'}"><span class="ld" aria-hidden="true"></span><span><b>${online ? 'On' : 'Off'}</b><small>${online ? 'Online' : 'Offline'}</small></span></span>
         <button class="bell" data-act="bell" aria-label="${al ? al + ' thing' + (al === 1 ? '' : 's') + ' need attention' : 'Nothing needs attention'}"><span aria-hidden="true">🔔</span>${al ? `<span class="bd" aria-hidden="true">${al}</span>` : ''}</button>`; })()}
       <div class="who"><i aria-hidden="true">${esc((cur.name || '?').trim()[0].toUpperCase())}</i><span>${esc(cur.name)}<small>${ROLES[cur.role]}</small></span></div></div></header>
-      <div class="top">${ui.route === 'dashboard' ? `<div class="greet"><h1 class="disp">${greeting()}, ${esc(cur.name)}</h1><span>— ${ROLES[cur.role]} · ${esc(db.settings.name)} · ${STORE_OK ? 'data saved on this device' : '<b style="color:var(--bad)">not saved — this view cannot keep data</b>'}</span></div>` : `<h1>${esc(title)}</h1>`}<span class="sp"></span>
-      <div class="topr">${['dashboard', 'customers', 'wholesale', 'sales', 'momo', 'inventory', 'products', 'shifts'].includes(ui.route) ? `<label class="chip decorchip" title="Switch between glossy 3D and flat stat cards"><input type="checkbox" data-act="decor" ${db.settings.decor3d ? 'checked' : ''}> 3D style cards</label>` : ''}${db.settings.sample ? '<span class="chip sample" title="Replace with your real catalogue in Settings">Sample data</span>' : ''}</div>
+      <div class="top">${ui.route === 'dashboard' ? `<div class="greet"><h1 class="disp">${greeting()}, ${esc(cur.name)}</h1><span>— ${ROLES[cur.role]} · ${esc(db.settings.name)} · ${STORE_OK ? 'data saved on this device' : '<b style="color:var(--bad)">not saved — this view cannot keep data</b>'}</span></div>` : `<h1>${esc(title)}</h1>`}${ui.route === 'pos' && can('sell') && !openShift(cur.id) ? `<div class="shiftnote" role="status"><span class="dot" aria-hidden="true"></span><b>Open your cash shift before selling.</b><button class="btn sm gold" data-act="openshift">Open shift</button></div>` : ''}<span class="sp"></span>
+      <div class="topr">${['dashboard', 'customers', 'wholesale', 'sales', 'momo', 'inventory', 'products', 'shifts', 'pos'].includes(ui.route) ? `<label class="chip decorchip" title="Switch between glossy 3D and flat stat cards"><input type="checkbox" data-act="decor" ${db.settings.decor3d ? 'checked' : ''}> 3D style cards</label>` : ''}${db.settings.sample ? '<span class="chip sample" title="Replace with your real catalogue in Settings">Sample data</span>' : ''}</div>
       </div>
       </div>`; }
 // Apply a settings change everywhere at once: colours, browser title, sidebar name block and header — without re-drawing the form being edited.
@@ -1351,13 +1407,18 @@ VIEWS.pos = () => {
   const prods = db.products.filter(p => p.active && (ui.cat === 'All' || p.cat === ui.cat) && (!q || (p.brand + ' ' + p.name + ' ' + p.sku + ' ' + p.size).toLowerCase().includes(q)));
   const k = cartPriced();
   const sh = openShift(cur.id);
-  return `${!sh ? `<div class="card" style="margin-bottom:12px;border-left:4px solid var(--warn)"><div class="row"><b>Open your cash shift before selling.</b><span class="sp"></span><button class="btn gold" data-act="openshift">Open shift</button></div></div>` : ''}
+  return `
   <div class="pos"><div>
     <div class="row" style="margin-bottom:10px"><input class="i" style="flex:1;min-width:200px" placeholder="Search or scan: brand, size, SKU…" data-in="q" value="${esc(ui.q)}" aria-label="Search products">
       <div class="seg">${cats.map(c => `<button class="${ui.cat === c ? 'on' : ''}" data-act="cat" data-c="${esc(c)}">${esc(c)}</button>`).join('')}</div></div>
-    <div class="pgrid">${prods.map(p => { const a = avail(p.id); const ne = lotsOf(p.id).some(l => nearExp(l)); return `<button class="pc ${a <= 0 ? 'out' : ''}" data-act="add" data-id="${p.id}" ${a <= 0 ? 'disabled' : ''}>
-      <span class="b">${esc(p.brand)} · ${esc(p.size)}</span><span class="n">${esc(p.name)}</span><span class="st">${p.packCount} pcs · <span class="${a <= p.low ? 'tag warn' : ''}">${a} packs</span>${ne ? ' <span class="tag warn">near expiry</span>' : ''}</span>
-      <span class="pr">${GHS(p.retail)}</span>${p.tierA ? `<span class="hint">Tier A ${GHS(p.tierA)} from ${p.tierAMin} packs</span>` : ''}</button>`; }).join('') || '<div class="empty">No products match.</div>'}</div></div>
+    <div class="pgrid ${db.settings.decor3d ? '' : 'flat'}">${prods.map(p => { const a = avail(p.id), ne = lotsOf(p.id).some(l => nearExp(l)), inCart = sum(ui.cart.lines.filter(l => l.pid === p.id), l => l.qty), ty = /Wipe/i.test(p.cat) ? 'wipes' : /Pant/i.test(p.cat) ? 'pants' : 'diapers';
+      const stock = a <= 0 ? ['out', 'Out of stock'] : a <= p.low ? ['low', `${a} pack${a === 1 ? '' : 's'} left`] : ['ok', `${a} packs`];
+      return `<button class="pc t-${ty} ${a <= 0 ? 'out' : ''} ${inCart ? 'incart' : ''}" data-act="add" data-id="${p.id}" ${a <= 0 ? 'disabled' : ''} aria-label="Add ${esc(p.brand + ' ' + p.name)}, ${GHS(p.retail)}, ${stock[1]}${inCart ? `, ${inCart} in this sale` : ''}">
+      <span class="pc-top"><span class="pc-ic" aria-hidden="true">${ty === 'wipes' ? '💧' : '👶'}</span><span class="b">${esc(p.brand)}</span>${p.size && p.size !== '—' ? `<span class="pc-sz" aria-hidden="true">${esc(p.size)}</span>` : `<span class="pc-sz wp" aria-hidden="true">${p.packCount}</span>`}${inCart ? `<span class="pc-q" aria-hidden="true">${inCart}</span>` : ''}</span>
+      <span class="pc-bd"><span class="n">${esc(p.name)}</span>
+        <span class="st"><span class="chipx">${p.packCount} pcs</span><span class="chipx s-${stock[0]}">${stock[1]}</span>${ne ? '<span class="chipx s-exp">near expiry</span>' : ''}</span>
+        ${p.tierA ? `<span class="pc-tier">Tier A <b>${GHS(p.tierA)}</b> from ${p.tierAMin} packs</span>` : '<span class="pc-tier">&nbsp;</span>'}</span>
+      <span class="pc-ft"><span class="pr">${GHS(p.retail)}</span><span class="pc-add" aria-hidden="true">+</span></span></button>`; }).join('') || '<div class="empty">No products match.</div>'}</div></div>
   <div class="card cart"><h3>Current sale</h3>
     <label class="f">Customer (optional; required for credit)</label>
     <div class="row"><select class="i" style="flex:1" data-act-change="cust"><option value="">Walk-in customer</option>${db.customers.map(c => `<option value="${c.id}" ${ui.cart.cid === c.id ? 'selected' : ''}>${esc(c.name)}${c.type === 'wholesale' ? ' · wholesale' : ''}</option>`).join('')}</select>
@@ -1467,21 +1528,55 @@ function showReceipt(id, copy) {
 
 // customer registration (CRM-004, CON-001/002)
 function custForm(c) {
-  c = c || {}; const own = isOwner();
-  modal(c.id ? 'Edit customer' : 'Register customer', `
-    <label class="f">Name</label><input class="i" id="c-name" value="${esc(c.name)}" autocomplete="off">
-    <label class="f">Phone</label><input class="i" id="c-phone" inputmode="tel" value="${esc(dispPhone(c.phone))}" placeholder="024 123 4567"><div class="hint" id="c-net"></div>
-    <div class="grid g2"><div><label class="f">Type</label><select class="i" id="c-type"><option value="retail" ${c.type !== 'wholesale' ? 'selected' : ''}>Retail</option><option value="wholesale" ${c.type === 'wholesale' ? 'selected' : ''}>Wholesale</option></select></div>
-    <div><label class="f">Town / area</label><input class="i" id="c-town" value="${esc(c.town)}"></div></div>
-    <label class="f">GhanaPostGPS (optional)</label><input class="i" id="c-gps" value="${esc(c.gps)}" placeholder="BT-0000-0000">
-    <div id="c-ws" style="display:${c.type === 'wholesale' ? 'block' : 'none'}"><div class="grid g2"><div><label class="f">Credit limit (GH₵)</label><input class="i" id="c-limit" inputmode="decimal" value="${c.limit ? p2s(c.limit) : ''}" ${own ? '' : 'disabled'}></div><div><label class="f">Terms (days)</label><input class="i" id="c-terms" inputmode="numeric" value="${c.terms || db.settings.creditTerms}" ${own ? '' : 'disabled'}></div></div>${own ? '' : '<div class="hint">Only the owner sets credit limits and terms.</div>'}</div>
-    ${c.id ? '' : `<div class="card" style="margin-top:14px;background:var(--surface)"><b>Read to the customer:</b><p style="margin:6px 0">“${esc(db.settings.consentText)}”</p>
-      <div class="grid g2"><div><label class="f">WhatsApp offers</label><select class="i" id="c-wa"><option value="">— choose —</option><option value="opted_in">Yes</option><option value="withdrawn">No</option></select></div>
-      <div><label class="f">SMS offers</label><select class="i" id="c-sms"><option value="">— choose —</option><option value="opted_in">Yes</option><option value="withdrawn">No</option></select></div></div>
-      <div class="hint">Never pre-select. Buying does not mean they agreed. Wording version ${esc(db.settings.consentVersion)} is saved with the answer.</div></div>`}
-    <div class="err" id="c-err"></div>`, `<button class="btn sec" data-act="close">Cancel</button><button class="btn" data-act="savecust" data-id="${c.id || ''}">Save</button>`);
-  const ph = $('#c-phone'); const upd = () => { const e = normPhone(ph.value); $('#c-net').textContent = e ? `${dispPhone(e)} · ${network(e)}` : (ph.value ? 'Not a valid Ghana number yet' : ''); };
-  ph.oninput = upd; upd(); $('#c-type').onchange = e => $('#c-ws').style.display = e.target.value === 'wholesale' ? 'block' : 'none';
+  c = c || {}; const own = isOwner(), isNew = !c.id, ty = c.type === 'wholesale' ? 'wholesale' : 'retail';
+  const yn = (f, ch, ic, title) => `<div class="rg-ch" data-ch="${ch}"><div class="rg-ch-h"><span class="rg-ci" aria-hidden="true">${ic}</span><b>${title}</b><span class="rg-st" id="${f}-st">Not asked yet</span></div>
+      <input type="hidden" id="${f}" value=""><div class="rg-yn" role="group" aria-label="${title} offers — customer's answer"><button type="button" data-f="${f}" data-v="opted_in" aria-pressed="false">✓ Yes</button><button type="button" data-f="${f}" data-v="withdrawn" aria-pressed="false">✕ No</button></div></div>`;
+  modal(isNew ? 'Register customer' : 'Edit customer', `<div class="rg">
+    <div class="rg-hero"><div class="rg-av" id="rg-av" aria-hidden="true">${esc(((c.name || '').trim()[0] || '+').toUpperCase())}</div><div class="rg-hid"><div class="rg-nm" id="rg-nm">${esc(c.name || 'New customer')}</div><div class="rg-sub" id="rg-sub">${c.phone ? esc(dispPhone(c.phone)) + ' · ' + network(c.phone) : 'Type the name and phone number to begin'}</div></div>${isNew ? '<span class="rg-tag">Welcome message sent on save</span>' : ''}</div>
+    <section class="rg-sec"><h4><span class="rg-n">1</span>Contact</h4><div class="grid g2">
+      <div><label class="f" for="c-name">Full name</label><input class="i" id="c-name" value="${esc(c.name)}" autocomplete="off" placeholder="e.g. Akosua Mensah"></div>
+      <div><label class="f" for="c-phone">Phone number</label><div class="rg-ph"><span aria-hidden="true">🇬🇭 +233</span><input class="i" id="c-phone" inputmode="tel" value="${esc(dispPhone(c.phone))}" placeholder="024 123 4567"></div><div class="rg-net" id="c-net" aria-live="polite"></div></div></div></section>
+    <section class="rg-sec"><h4><span class="rg-n">2</span>Customer type</h4><input type="hidden" id="c-type" value="${ty}">
+      <div class="rg-types" role="radiogroup" aria-label="Customer type">
+        <button type="button" class="rg-type ${ty === 'retail' ? 'on' : ''}" data-t="retail" role="radio" aria-checked="${ty === 'retail'}"><span class="rg-ti" aria-hidden="true">🛍️</span><b>Retail</b><small>Buys for their own baby and pays at the counter</small></button>
+        <button type="button" class="rg-type ${ty === 'wholesale' ? 'on' : ''}" data-t="wholesale" role="radio" aria-checked="${ty === 'wholesale'}"><span class="rg-ti" aria-hidden="true">🏪</span><b>Wholesale</b><small>A shop or reseller that may buy on credit</small></button></div>
+      <div id="c-ws" class="rg-ws" style="display:${ty === 'wholesale' ? 'block' : 'none'}"><div class="grid g2"><div><label class="f" for="c-limit">Credit limit (GH₵)</label><input class="i" id="c-limit" inputmode="decimal" value="${c.limit ? p2s(c.limit) : ''}" ${own ? '' : 'disabled'} placeholder="0.00"></div><div><label class="f" for="c-terms">Pay within (days)</label><input class="i" id="c-terms" inputmode="numeric" value="${c.terms || db.settings.creditTerms}" ${own ? '' : 'disabled'}></div></div>${own ? '' : '<div class="hint">Only the owner sets credit limits and terms.</div>'}</div></section>
+    <section class="rg-sec"><h4><span class="rg-n">3</span>Location</h4><div class="grid g2">
+      <div><label class="f" for="c-town">Town / area</label><input class="i" id="c-town" value="${esc(c.town)}" placeholder="e.g. Hansua, Techiman"></div>
+      <div><label class="f" for="c-gps">GhanaPostGPS <span class="hint">(optional)</span></label><input class="i" id="c-gps" value="${esc(c.gps)}" placeholder="BT-0000-0000"></div></div></section>
+    ${isNew ? `<section class="rg-sec"><h4><span class="rg-n">4</span>Marketing consent</h4>
+      <div class="rg-quote"><span>Read to the customer</span>“${esc(db.settings.consentText)}”</div>
+      <div class="rg-chs">${yn('c-wa', 'whatsapp', '💬', 'WhatsApp')}${yn('c-sms', 'sms', '✉️', 'SMS')}</div>
+      <div class="hint">Never answer for the customer. Buying does not mean they agreed. Wording version ${esc(db.settings.consentVersion)} is saved with the answer.</div></section>
+    <section class="rg-sec"><h4><span class="rg-n">5</span>Welcome message</h4><div class="rg-wel" id="rg-wel"></div>
+      <div class="rg-msg"><div class="rg-mh"><b>The message</b><span class="hint" id="rg-wcount"></span><span class="sp"></span>${canEditWelcome() ? '<button type="button" class="btn sm sec" id="rg-edit">✎ Edit message</button>' : ''}</div>
+        <div class="rg-bubble" id="rg-bubble"></div>
+        <div id="rg-editor" class="rg-editor" hidden><label class="f" for="rg-wtext">Edit the welcome message</label><textarea class="i" id="rg-wtext" rows="5" maxlength="612">${esc(db.settings.welcomeMsg || welcomeDefault())}</textarea>
+          <div class="rg-ins"><span class="hint">Insert:</span><button type="button" class="chip" data-ins="{name}">Customer's first name</button><button type="button" class="chip" data-ins="{shop}">Shop name</button></div>
+          <div class="row" style="margin-top:8px;gap:8px"><button type="button" class="btn sm" id="rg-wsave">Save message</button><button type="button" class="btn sm sec" id="rg-wcancel">Cancel</button><span class="sp"></span><button type="button" class="btn sm sec" id="rg-wreset">Use the standard wording</button></div>
+          <div class="hint">Saved for every new customer. Keep “Reply STOP to stop offers” so customers can say no.</div></div></div></section>` : ''}
+    <div class="err" id="c-err" role="alert"></div></div>`, `<button class="btn sec" data-act="close">Cancel</button><button class="btn gold" data-act="savecust" data-id="${c.id || ''}">${isNew ? '✓ Register customer' : 'Save changes'}</button>`, true);
+  const root = $('#modal-root .rg'), ph = $('#c-phone'), nm = $('#c-name');
+  const hero = () => { const e = normPhone(ph.value), n = nm.value.trim(); $('#rg-av').textContent = (n[0] || '+').toUpperCase(); $('#rg-nm').textContent = n || 'New customer';
+    $('#rg-sub').textContent = e ? `${dispPhone(e)} · ${network(e)}` : 'Type the name and phone number to begin';
+    $('#c-net').innerHTML = e ? `<span class="ok">✓ ${esc(network(e))} number</span>` : (ph.value ? '<span class="no">Not a valid Ghana number yet</span>' : ''); };
+  const wel = () => { const box = $('#rg-wel'); if (!box) return; box.innerHTML = [['whatsapp', 'c-wa', '💬', 'WhatsApp'], ['sms', 'c-sms', '✉️', 'SMS']].map(([ch, f, ic, l]) => { const p = welcomePlan(ch, $('#' + f).value);
+      return `<div class="rg-wl ${p.cls}"><span aria-hidden="true">${ic}</span><b>${l}</b><span>${p.text}</span></div>`; }).join(''); };
+  const prev = () => { const b = $('#rg-bubble'); if (!b) return; const ed = $('#rg-editor'), raw = ed && !ed.hidden ? $('#rg-wtext').value : null;
+    const txt = raw != null ? (raw.trim() || ' ').replace(/\{name\}/g, firstName({name: nm.value}) || 'there').replace(/\{shop\}/g, db.settings.name) : welcomeText({name: nm.value || 'Akosua'});
+    b.textContent = txt; const n = txt.length; $('#rg-wcount').textContent = `${n} characters · ${n <= 160 ? 1 : Math.ceil(n / 153)} SMS`; };
+  const edBtn = $('#rg-edit'); if (edBtn) {
+    edBtn.onclick = () => { $('#rg-editor').hidden = false; edBtn.hidden = true; $('#rg-wtext').value = db.settings.welcomeMsg || welcomeDefault(); $('#rg-wtext').focus(); prev(); };
+    const close = () => { $('#rg-editor').hidden = true; edBtn.hidden = false; prev(); };
+    $('#rg-wtext').oninput = prev; $('#rg-wcancel').onclick = close;
+    $('#rg-wreset').onclick = () => { $('#rg-wtext').value = welcomeDefault(); prev(); };
+    $('#rg-wsave').onclick = () => { const v = $('#rg-wtext').value.trim(); if (v.length < 10) return toast('The welcome message is too short.', true);
+      db.settings.welcomeMsg = v === welcomeDefault() ? '' : v; audit('settings.welcome', 'wording changed while registering'); save(); toast('Welcome message saved.'); close(); };
+    $('#modal-root .rg').addEventListener('click', e => { const ins = e.target.closest('[data-ins]'); if (!ins) return; const ta = $('#rg-wtext'), a = ta.selectionStart, z = ta.selectionEnd;
+      ta.value = ta.value.slice(0, a) + ins.dataset.ins + ta.value.slice(z); ta.focus(); ta.selectionStart = ta.selectionEnd = a + ins.dataset.ins.length; prev(); }); }
+  ph.oninput = hero; nm.oninput = () => { hero(); prev(); }; hero(); wel(); prev();
+  root.addEventListener('click', e => { const t = e.target.closest('.rg-type'); if (t) { $('#c-type').value = t.dataset.t; root.querySelectorAll('.rg-type').forEach(b => { const on = b === t; b.classList.toggle('on', on); b.setAttribute('aria-checked', on); }); $('#c-ws').style.display = t.dataset.t === 'wholesale' ? 'block' : 'none'; return; }
+    const y = e.target.closest('.rg-yn button'); if (y) { const f = y.dataset.f; $('#' + f).value = y.dataset.v; y.parentNode.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b === y)); const st = $('#' + f + '-st'); st.textContent = y.dataset.v === 'opted_in' ? 'Said yes' : 'Said no'; st.className = 'rg-st ' + (y.dataset.v === 'opted_in' ? 'ok' : 'no'); y.closest('.rg-ch').classList.toggle('yes', y.dataset.v === 'opted_in'); y.closest('.rg-ch').classList.toggle('no', y.dataset.v !== 'opted_in'); wel(); } });
 }
 function saveCust(id) {
   const err = m => $('#c-err').textContent = m;
@@ -1504,15 +1599,55 @@ function saveCust(id) {
   save(); if (!id) emit('customer.registered', {customer: {name, phone: dispPhone(phone), type, town: c.town}, whatsappOffers: consentOf(c.id, 'whatsapp'), smsOffers: consentOf(c.id, 'sms')}); closeModal();
   if (ui.route === 'pos') ui.cart.cid = c.id;
   render(); toast('Customer saved.');
-  if (!id && canMarket(c, 'whatsapp')) setTimeout(() => welcomeModal(c.id), 200);
+  if (!id) setTimeout(() => autoWelcome(c), 150);
 }
-function welcomeText() { const s = db.settings; return `Akwaaba to ${s.name}! Thank you for joining us. We sell quality diapers and baby wipes, retail and wholesale, at ${s.location}. Call or WhatsApp ${s.phone1} / ${s.phone2}. Please save our number to receive our offers. Reply STOP to stop offers.`; }
+// Welcome messages: sent by themselves through a connected SMS gateway or the WhatsApp Cloud API; otherwise staff press Send.
+const firstName = c => String((c && c.name) || '').replace(/\(.*?\)/g, '').trim().split(/\s+/)[0] || '';
+function welcomeText(c) { const t = (db.settings.welcomeMsg || '').trim(); if (t) return t.replace(/\{name\}/g, firstName(c) || 'there').replace(/\{shop\}/g, db.settings.name); return welcomeDefault(c); }
+const canEditWelcome = () => isOwner() || cur.role === 'manager';
+const autoOn = ch => !db.settings.autoWelcome || db.settings.autoWelcome[ch] !== false;
+const chanInt = ch => (db.integrations || []).find(i => i.enabled && i.kind === (ch === 'sms' ? 'sms' : 'whatsapp'));
+function welcomePlan(ch, ans) { const it = chanInt(ch), l = ch === 'sms' ? 'SMS' : 'WhatsApp';
+  if (ans === 'withdrawn') return {cls: 'no', text: 'Not sent — the customer said no'};
+  if (ans !== 'opted_in') return {cls: 'wait', text: 'Sent if the customer says yes'};
+  if (it && autoOn(ch)) return {cls: 'auto', text: `Sent automatically through ${esc(it.name)}`};
+  return {cls: 'manual', text: ch === 'sms' ? (it ? 'Automatic sending is switched off — staff can open the SMS app' : 'No SMS gateway connected — staff can open the SMS app') : (it ? 'Automatic sending is switched off — WhatsApp opens ready to send' : 'WhatsApp opens with the message ready — staff press Send')}; }
+function autoWelcome(c) { const rows = [], q = db.msgQueue || (db.msgQueue = []);
+  for (const [ch, l, ic] of [['whatsapp', 'WhatsApp', '💬'], ['sms', 'SMS', '✉️']]) { const ok = canMarket(c, ch), it = chanInt(ch), done = db.msgs.some(m => m.cid === c.id && m.kind === 'welcome' && (m.ch || 'whatsapp') === ch);
+    if (!ok) { rows.push(`<div class="rg-wl no"><span>${ic}</span><b>${l}</b><span>Not sent — ${c.dnm ? 'do not market' : 'the customer said no'}</span></div>`); continue; }
+    if (done) { rows.push(`<div class="rg-wl auto"><span>${ic}</span><b>${l}</b><span>Already sent</span></div>`); continue; }
+    if (it && autoOn(ch)) { const m = {id: uid(), cid: c.id, ch, iid: it.id, text: welcomeText(c), ts: Date.now(), tries: 0, staff: cur.id}; q.push(m);
+      rows.push(`<div class="rg-wl auto" data-wq="${m.id}"><span>${ic}</span><b>${l}</b><span class="wq">⏳ Sending through ${esc(it.name)}…</span></div>`); }
+    else rows.push(`<div class="rg-wl manual"><span>${ic}</span><b>${l}</b><span>${ch === 'sms' ? 'Not sent automatically' : 'Ready to send'}</span>${ch === 'sms'
+      ? `<a class="btn sm" href="sms:${esc(c.phone)}?body=${encodeURIComponent(welcomeText(c))}" data-act="logmsg" data-cid="${c.id}" data-kind="welcome" data-ch="sms">Open SMS app</a>`
+      : `<a class="btn sm gold" target="_blank" rel="noopener" href="${waLink(c.phone, welcomeText(c))}" data-act="logmsg" data-cid="${c.id}" data-kind="welcome" data-ch="whatsapp">Open WhatsApp</a>`}</div>`); }
+  save(); modal('Customer registered', `<div class="rg-done"><div class="rg-ok" aria-hidden="true">✓</div><div><b>${esc(c.name)}</b> is registered.<div class="hint">${esc(dispPhone(c.phone))} · ${esc(network(c.phone))} · ${esc(c.type)}</div></div></div>
+    <h4 class="rg-h">Welcome message</h4><div class="rg-wels">${rows.join('')}</div>
+    ${rows.some(r => r.includes('manual')) && !(db.integrations || []).some(i => i.enabled && (i.kind === 'sms' || i.kind === 'whatsapp')) && isOwner() ? '<p class="hint">To send these by themselves next time, connect an SMS gateway or the WhatsApp Cloud API in Settings → Integrations.</p>' : ''}`,
+    `<button class="btn sec" data-act="custview" data-id="${c.id}">Open profile</button><button class="btn" data-act="close">Done</button>`);
+  flushMsgs(); }
+let msgBusy = false;
+async function flushMsgs() { if (msgBusy || !db || !db.msgQueue || !db.msgQueue.length) return; msgBusy = true; let changed = false;
+  try { for (const q of db.msgQueue.slice()) { const it = INT(q.iid), c = C(q.cid), el = document.querySelector(`[data-wq="${q.id}"] .wq`);
+      const drop = () => { db.msgQueue.splice(db.msgQueue.indexOf(q), 1); changed = true; };
+      if (!it || !it.enabled || !c || !canMarket(c, q.ch)) { drop(); if (el) el.textContent = 'Not sent — the connection or consent changed'; continue; }
+      if (!navigator.onLine) { document.querySelectorAll('[data-wq] .wq').forEach(x => { if (!x.closest('.sent')) x.textContent = '📶 No internet — it will be sent when the device is back online'; }); break; }
+      try { if (q.ch === 'sms') await sendSMS(it, c.phone, q.text); else await sendWA(it, c.phone, {name: firstName(c)});
+        drop(); db.msgs.push({id: uid(), cid: c.id, kind: 'welcome', ch: q.ch, ts: Date.now(), staff: q.staff, auto: true, via: it.name});
+        it.last = {ts: Date.now(), ok: true, msg: `Welcome ${q.ch === 'sms' ? 'SMS' : 'WhatsApp'} sent to ${c.name}`}; audit('message.auto', `${q.ch} welcome to ${c.name} via ${it.name}`);
+        if (el) { el.textContent = `✓ Sent through ${it.name}`; el.closest('.rg-wl').classList.add('sent'); } }
+      catch (e) { q.tries = (q.tries || 0) + 1; q.err = e.message; changed = true; it.last = {ts: Date.now(), ok: false, msg: `Welcome to ${c.name} not sent yet: ${e.message}`};
+        if (q.tries >= 12) { drop(); audit('message.failed', `${q.ch} welcome to ${c.name}: ${e.message}`); if (el) el.textContent = '✕ Could not be sent: ' + e.message; }
+        else if (el) el.textContent = '⚠ Not sent yet — will try again: ' + e.message; } }
+  } finally { msgBusy = false; if (changed) save(); } }
+setInterval(flushMsgs, 60000); window.addEventListener('online', () => flushMsgs()); setTimeout(flushMsgs, 4000);
+function welcomeDefault() { const s = db.settings; return `Akwaaba to ${s.name}! Thank you for joining us. We sell quality diapers and baby wipes, retail and wholesale, at ${s.location}. Call or WhatsApp ${s.phone1} / ${s.phone2}. Please save our number to receive our offers. Reply STOP to stop offers.`; }
 function welcomeModal(cid) {
   const c = C(cid);
   if (!canMarket(c, 'whatsapp')) return toast('No WhatsApp marketing consent — welcome not sent.', true);
-  if (db.msgs.some(m => m.cid === cid && m.kind === 'welcome')) return toast('Welcome was already sent to this customer.', true);
-  modal('Send welcome on WhatsApp', `<p>${esc(c.name)} agreed to WhatsApp offers. Tap the button to open WhatsApp with the welcome message ready, then share today's flyer image from the phone.</p><div class="card" style="background:var(--surface);white-space:pre-wrap">${esc(welcomeText())}</div>`,
-    `<button class="btn sec" data-act="close">Later</button><a class="btn gold" target="_blank" rel="noopener" href="${waLink(c.phone, welcomeText())}" data-act="logmsg" data-cid="${c.id}" data-kind="welcome">Open WhatsApp</a>`);
+  if (db.msgs.some(m => m.cid === cid && m.kind === 'welcome' && (m.ch || 'whatsapp') === 'whatsapp')) return toast('Welcome was already sent to this customer.', true);
+  modal('Send welcome on WhatsApp', `<p>${esc(c.name)} agreed to WhatsApp offers. Tap the button to open WhatsApp with the welcome message ready, then share today's flyer image from the phone.</p><div class="card" style="background:var(--surface);white-space:pre-wrap">${esc(welcomeText(c))}</div>`,
+    `<button class="btn sec" data-act="close">Later</button><a class="btn gold" target="_blank" rel="noopener" href="${waLink(c.phone, welcomeText(c))}" data-act="logmsg" data-cid="${c.id}" data-kind="welcome">Open WhatsApp</a>`);
 }
 
 // Sales & returns
@@ -1734,7 +1869,7 @@ function custView(id) {
   const ev = [...db.sales.filter(s => s.cid === id).map(s => ({ts: s.ts, t: `Bought ${s.lines.length} item${s.lines.length > 1 ? 's' : ''} — ${s.no} · ${GHS(s.total)}`})),
     ...db.recPayments.filter(r => r.cid === id).map(r => ({ts: r.ts, t: `Paid ${GHS(r.amount)} on account (${r.method})`})),
     ...db.consents.filter(x => x.cid === id).map(x => ({ts: x.ts, t: `${x.ch.toUpperCase()} consent: ${x.status.replace('_', ' ')} (${x.source}, v${x.version})`})),
-    ...db.msgs.filter(m => m.cid === id).map(m => ({ts: m.ts, t: `WhatsApp ${m.kind} sent by ${S(m.staff)?.name || ''}`}))].sort((a, b) => b.ts - a.ts);
+    ...db.msgs.filter(m => m.cid === id).map(m => ({ts: m.ts, t: `${m.ch === 'sms' ? 'SMS' : 'WhatsApp'} ${m.kind} ${m.auto ? 'sent automatically' + (m.via ? ' via ' + m.via : '') : 'sent by ' + (S(m.staff)?.name || '')}`}))].sort((a, b) => b.ts - a.ts);
   const cs = ch => consentOf(id, ch), sales = db.sales.filter(s => s.cid === id), spent = sum(sales, s => s.total - sum(s.returns, r => r.amount)), last = sales.length ? Math.max(...sales.map(s => s.ts)) : 0;
   const initials = (c.name || '?').replace(/\(.*?\)/g, '').trim().split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase();
   const evKind = t => /^Bought/.test(t) ? 'sale' : /^Paid/.test(t) ? 'pay' : /consent/.test(t) ? 'consent' : 'msg';
@@ -1757,7 +1892,7 @@ function custView(id) {
     <label class="cv-switch"><input type="checkbox" role="switch" data-act="dnm" data-id="${id}" ${c.dnm ? 'checked' : ''}><span class="cv-track" aria-hidden="true"><i></i></span> Do not market on any channel</label>
     <h3 class="cv-h">Timeline</h3>
     <ol class="cv-tl">${ev.map(e => `<li class="${evKind(e.t)}"><span class="cv-when">${fmtDT(e.ts)}</span><span class="cv-what">${esc(e.t)}</span></li>`).join('') || '<li class="msg"><span class="cv-what">Nothing yet.</span></li>'}</ol></div>`,
-    `<button class="btn sec" data-act="close">Close</button><button class="btn sec" data-act="editcust" data-id="${id}">Edit</button>${canMarket(c, 'whatsapp') && !db.msgs.some(m => m.cid === id && m.kind === 'welcome') ? `<button class="btn gold" data-act="welcome" data-id="${id}">Send welcome</button>` : ''}`, true);
+    `<button class="btn sec" data-act="close">Close</button><button class="btn sec" data-act="editcust" data-id="${id}">Edit</button>${canMarket(c, 'whatsapp') && !db.msgs.some(m => m.cid === id && m.kind === 'welcome' && (m.ch || 'whatsapp') === 'whatsapp') ? `<button class="btn gold" data-act="welcome" data-id="${id}">Send welcome</button>` : ''}`, true);
 }
 
 // Wholesale & receivables (WHL-005/006/009)
@@ -1981,9 +2116,12 @@ document.addEventListener('click', async e => {
     'return': () => returnModal(d.id), doreturn: () => doReturn(d.id),
     newcust: () => custForm(), editcust: () => custForm(C(d.id)), savecust: () => saveCust(d.id || null), custview: () => custView(d.id),
     welcome: () => welcomeModal(d.id),
+    autowel: () => { db.settings.autoWelcome = Object.assign({sms: true, whatsapp: true}, db.settings.autoWelcome || {}, {[d.ch]: el.checked}); audit('settings.welcome', `${d.ch} automatic welcome ${el.checked ? 'on' : 'off'}`); save(); toast(`Automatic ${d.ch === 'sms' ? 'SMS' : 'WhatsApp'} welcome ${el.checked ? 'on' : 'off'}.`); },
+    welsave: () => { const v = $('#wl-text').value.trim(); if (v.length < 10) return toast('The welcome message is too short.', true); db.settings.welcomeMsg = v === welcomeDefault() ? '' : v; audit('settings.welcome', 'wording changed'); save(); render(); toast('Welcome wording saved.'); },
+    welreset: () => { db.settings.welcomeMsg = ''; save(); render(); toast('Standard wording restored.'); },
     consent: () => { db.consents.push({id: uid(), cid: d.id, ch: d.ch, status: d.s, version: db.settings.consentVersion, source: 'staff (' + cur.name + ')', staff: cur.id, ts: Date.now()}); audit('consent', `${C(d.id).name} ${d.ch} ${d.s}`); save(); custView(d.id); render(); custView(d.id); toast('Consent updated.'); },
     dnm: () => { const c = C(d.id); c.dnm = el.checked; audit('consent.dnm', `${c.name} ${c.dnm}`); save(); toast(c.dnm ? 'Marked do not market.' : 'Do-not-market removed.'); },
-    logmsg: () => { db.msgs.push({id: uid(), cid: d.cid, kind: d.kind, ts: Date.now(), staff: cur.id}); audit('message.manual', `${d.kind} to ${C(d.cid)?.name}`); save(); if (d.kind === 'welcome') { setTimeout(closeModal, 50); } if (ui.route === 'flyers') setTimeout(render, 300); },
+    logmsg: () => { db.msgs.push({id: uid(), cid: d.cid, kind: d.kind, ch: d.ch || 'whatsapp', ts: Date.now(), staff: cur.id}); audit('message.manual', `${d.kind} to ${C(d.cid)?.name}`); save(); if (d.kind === 'welcome') { setTimeout(closeModal, 50); } if (ui.route === 'flyers') setTimeout(render, 300); },
     mverify: async () => { const f = findPay(d.p); if (!(await askConfirm('Verify MoMo', `${f.p.net} ${f.p.txn} for ${GHS(f.p.amount)}: I checked the MoMo statement — same network, transaction ID and amount.`, 'Yes, verified'))) return; f.p.status = 'verified'; f.p.by = cur.id; f.p.vts = Date.now(); audit('momo.verify', `${f.p.net} ${f.p.txn} ${GHS(f.p.amount)}`); save(); emit('momo.verified', {network: f.p.net, txn: f.p.txn, amount: cedi(f.p.amount), receipt: f.s ? f.s.no : undefined, verifiedBy: cur.name}); render(); toast('Verified.'); },
     mreject: async () => { const f = findPay(d.p); if (!(await askConfirm('MoMo not found', 'Mark as NOT found on the statement? The owner will be alerted and the amount must be followed up with the customer.', 'Mark not found'))) return; f.p.status = 'rejected'; f.p.by = cur.id; f.p.vts = Date.now(); audit('momo.reject', `${f.p.net} ${f.p.txn} ${GHS(f.p.amount)} ${f.s ? f.s.no : ''}`); save(); render(); toast('Marked not found — follow up with the customer.', true); },
     tab: () => { ui.tab[d.g] = d.g === 'dr' ? parseInt(d.v) : d.v; render(); },
@@ -2067,7 +2205,7 @@ const Vault = (() => { let kp = null;
     async open(o) { if (!o) return ''; const k = await key(); return new TextDecoder().decode(await crypto.subtle.decrypt({name: 'AES-GCM', iv: ub(o.iv)}, k, ub(o.ct))); },
     async ok() { try { if (!STORE_OK || !window.crypto || !crypto.subtle || !window.indexedDB) return false; await key(); return true; } catch (e) { return false; } }
   }; })();
-const INT_KINDS = {webhook: 'Webhook (send shop events)', sms: 'SMS gateway', api: 'Other API'};
+const INT_KINDS = {webhook: 'Webhook (send shop events)', sms: 'SMS gateway', whatsapp: 'WhatsApp Cloud API', api: 'Other API'};
 const HOOK_EVENTS = [['sale.completed', 'Sale completed'], ['sale.returned', 'Return recorded'], ['momo.verified', 'MoMo payment verified'], ['customer.registered', 'Customer registered'],
   ['debt.payment', 'Wholesale debt payment'], ['stock.received', 'Stock received'], ['shift.closed', 'Cash shift closed']];
 const HOOK_DEFAULT = ['sale.completed', 'momo.verified', 'customer.registered'];
@@ -2082,6 +2220,7 @@ const SMS_PRESETS = {
 const INT_NAMES = {
   webhook: ['Google Sheets (Apps Script)', 'Make', 'Zapier', 'n8n', 'Pipedream', 'Accounting system', 'My own server'],
   sms: ['Hubtel SMS', 'Arkesel SMS', 'mNotify SMS'],
+  whatsapp: ['WhatsApp Cloud API (Meta)', 'WhatsApp Business (via Meta partner)'],
   api: ['Paystack', 'Hubtel Payments', 'MTN MoMo API', 'ExpressPay', 'Flutterwave', 'WhatsApp Cloud API (Meta)', 'Google Sheets API', 'QuickBooks Online', 'Zoho Books', 'Shopify', 'WooCommerce', 'Supplier system', 'Delivery / courier service']
 };
 const SMS_NAME = {hubtel: 'Hubtel SMS', arkesel: 'Arkesel SMS', mnotify: 'mNotify SMS'};
@@ -2121,6 +2260,16 @@ async function sendSMS(it, to, message) { const ph = normPhone(to); if (!ph) thr
   const vals = {to: ph.slice(1), message, sender: it.cfg.sender || '', key: await secretOf(it, 'key'), id: await secretOf(it, 'id')};
   const url = it.cfg.tpl.replace(/\{(to|message|sender|key|id)\}/g, (_, k) => encodeURIComponent(vals[k]));
   try { await fetch(url, {mode: 'no-cors', credentials: 'omit', referrerPolicy: 'no-referrer'}); } catch (e) { throw new Error(await netError(e)); } }
+// WhatsApp Cloud API: shops may start a conversation only with a message template that Meta has approved.
+async function sendWA(it, to, vars) { const ph = normPhone(to); if (!ph) throw new Error('Enter a valid Ghana phone number, e.g. 024 123 4567.');
+  const c = it.cfg, tok = await secretOf(it, 'token'), url = `https://graph.facebook.com/${encodeURIComponent(c.ver || 'v23.0')}/${encodeURIComponent(c.pnid)}/messages`;
+  const tpl = {name: c.tpl, language: {code: c.lang || 'en'}}; if (c.nameVar) tpl.components = [{type: 'body', parameters: [{type: 'text', text: (vars && vars.name) || 'there'}]}];
+  let res; try { res = await fetch(url, {method: 'POST', credentials: 'omit', referrerPolicy: 'no-referrer', headers: {Authorization: 'Bearer ' + tok, 'Content-Type': 'application/json'}, body: JSON.stringify({messaging_product: 'whatsapp', to: ph.slice(1), type: 'template', template: tpl})}); }
+  catch (e) { // If the browser may not read Meta's reply, send it as a plain form instead; the reply then cannot be read.
+    try { await fetch(url, {method: 'POST', mode: 'no-cors', credentials: 'omit', referrerPolicy: 'no-referrer', body: new URLSearchParams({messaging_product: 'whatsapp', to: ph.slice(1), type: 'template', template: JSON.stringify(tpl), access_token: tok})}); return {ok: true, unread: true}; }
+    catch (e2) { throw new Error(await netError(e2)); } }
+  if (!res.ok) { let m = ''; try { m = (await res.json()).error.message; } catch (e) {} throw new Error(`WhatsApp refused the message (${res.status})${m ? ': ' + m : ''}`); }
+  return {ok: true}; }
 async function apiTest(it) { const tok = await secretOf(it, 'token'); let url = it.cfg.base.replace(/\/+$/, '') + (it.cfg.path ? '/' + it.cfg.path.replace(/^\/+/, '') : ''); const headers = {};
   if (it.cfg.auth === 'bearer') headers.Authorization = 'Bearer ' + tok; if (it.cfg.auth === 'header') headers[it.cfg.hname] = tok;
   if (it.cfg.auth === 'query') url += (url.includes('?') ? '&' : '?') + encodeURIComponent(it.cfg.qname) + '=' + encodeURIComponent(tok);
@@ -2131,12 +2280,22 @@ async function intTest(it) { let r;
     if (it.kind === 'webhook') { await postHook(it, 'test.ping', {message: 'Test from ' + db.settings.name}, uid(), Date.now()); r = {ok: true, msg: 'Test event sent — check the receiving service to confirm it arrived.'}; }
     else if (it.kind === 'sms') { const v = await askForm('Send a test SMS', 'This uses one SMS credit from your provider account.', [{label: 'Phone number', value: it.cfg.test ? dispPhone(normPhone(it.cfg.test) || '') || it.cfg.test : '', required: true}], 'Send test');
       if (!v) return; await sendSMS(it, v[0], `Test from ${db.settings.name}: the SMS gateway is connected to ${productName()}.`); r = {ok: true, msg: 'Test SMS handed to the provider — check the phone. (A browser cannot read the provider\'s reply.)'}; }
+    else if (it.kind === 'whatsapp') { const v = await askForm('Send a test WhatsApp', `This sends your “${it.cfg.tpl}” template. The phone must be able to receive WhatsApp.`, [{label: 'Phone number', value: it.cfg.test ? dispPhone(normPhone(it.cfg.test) || '') || it.cfg.test : '', required: true}], 'Send test');
+      if (!v) return; const x = await sendWA(it, v[0], {name: 'there'}); r = {ok: true, msg: x.unread ? 'Test handed to WhatsApp — check the phone. (This browser cannot read Meta\'s reply.)' : 'WhatsApp accepted the test message — check the phone.'}; }
     else r = await apiTest(it);
   } catch (e) { r = {ok: false, msg: e.message}; }
   it.last = {ts: Date.now(), ...r}; audit('integration.test', `${it.name}: ${r.ok ? 'ok' : 'failed'}`); save(); render(); toast(r.msg, !r.ok); }
+function welcomeSettingsHTML() { const t = welcomeText({name: 'Akosua'}), n = t.length, parts = n <= 160 ? 1 : Math.ceil(n / 153), wq = (db.msgQueue || []).length;
+  const row = (ch, ic, l) => { const it = chanInt(ch); return `<label class="wl-row"><input type="checkbox" data-act="autowel" data-ch="${ch}" ${autoOn(ch) ? 'checked' : ''}><span class="wl-ic" aria-hidden="true">${ic}</span><span><b>Send the ${l} welcome automatically</b><small>${it ? `✓ Connected: ${esc(it.name)}` : ch === 'sms' ? 'Add an SMS gateway below to send by itself. Until then staff can open the SMS app.' : 'Add the WhatsApp Cloud API below to send by itself. Until then WhatsApp opens with the message ready.'}</small></span></label>`; };
+  return `<div class="card wlset"><h3>Welcome messages for new customers</h3><p class="hint" style="margin-top:0">Sent when a customer is registered, only on the channels they said yes to.${wq ? ` <b>${wq} waiting to send.</b>` : ''}</p>
+    ${row('sms', '✉️', 'SMS')}${row('whatsapp', '💬', 'WhatsApp')}
+    <label class="f" for="wl-text">Welcome wording (SMS, and WhatsApp when it opens for staff)</label><textarea class="i" id="wl-text" rows="4" maxlength="612">${esc(db.settings.welcomeMsg || welcomeDefault())}</textarea>
+    <div class="hint">Write {name} for the customer's first name and {shop} for the shop name. Now ${n} characters = ${parts} SMS per customer. The WhatsApp Cloud API sends your approved template instead.</div>
+    <div class="row" style="margin-top:8px"><button class="btn sm" data-act="welsave">Save wording</button><button class="btn sm sec" data-act="welreset">Use the standard wording</button></div></div>`; }
 function intTabHTML() { const L = db.integrations || [], qn = id => (db.hookQueue || []).filter(q => q.iid === id).length;
   const card = it => { const c = it.cfg, m = it.mask || {}; const meta = it.kind === 'webhook' ? `To ${esc(m.url || '—')} · ${(c.events || []).length} event type${(c.events || []).length === 1 ? '' : 's'}${c.pii ? ' · includes customer details' : ''}${m.sign ? ' · signed' : ''}`
       : it.kind === 'sms' ? `${esc((SMS_PRESETS[c.preset] || SMS_PRESETS.custom).label)} · sender ${esc(c.sender || '—')} · key ${esc(m.key || '—')}`
+      : it.kind === 'whatsapp' ? `Phone number ID ${esc(c.pnid || '—')} · template “${esc(c.tpl || '—')}” (${esc(c.lang || 'en')}) · token ${esc(m.token || '—')}`
       : `${esc((() => { try { return new URL(c.base).host; } catch (e) { return c.base; } })())} · ${c.auth === 'none' ? 'no key' : 'key ' + esc(m.token || '—')}`;
     return `<div class="card intcard"><div class="row"><b>${esc(it.name)}</b><span class="tag">${INT_KINDS[it.kind]}</span><span class="sp"></span>
       <div class="seg" role="group" aria-label="${esc(it.name)} on or off"><button class="${it.enabled ? 'on' : ''}" data-act="inttoggle" data-id="${it.id}" data-v="1" aria-pressed="${it.enabled}">On</button><button class="${it.enabled ? '' : 'on'}" data-act="inttoggle" data-id="${it.id}" data-v="0" aria-pressed="${!it.enabled}">Off</button></div></div>
@@ -2144,8 +2303,9 @@ function intTabHTML() { const L = db.integrations || [], qn = id => (db.hookQueu
       ${it.last ? `<div class="${it.last.ok ? 'okt' : 'badt'}">${fmtDT(it.last.ts)} · ${esc(it.last.msg)}</div>` : '<div class="meta">Not tested yet.</div>'}${qn(it.id) ? `<div class="meta">${qn(it.id)} event${qn(it.id) === 1 ? '' : 's'} waiting to send</div>` : ''}
       <div class="row" style="margin-top:8px"><button class="btn sm" data-act="inttest" data-id="${it.id}">Test</button><button class="btn sm sec" data-act="intedit" data-id="${it.id}">Edit</button><button class="btn sm danger" data-act="intdel" data-id="${it.id}">Remove</button></div></div>`; };
   return `<div class="intro"><p><b>Connect other services by entering their keys or links.</b> Keys are encrypted on this device and never shown again; to change one, type a new one. Adding or changing an integration needs the owner PIN, and every change is written to the audit log.</p>
-    <p><b>Webhook</b> — sends shop events (sales, MoMo checks, new customers…) to another system, such as Google Sheets through Apps Script, Make, Zapier or your own server. <b>SMS gateway</b> — Hubtel, Arkesel, mNotify or another provider; send a test SMS from here. <b>Other API</b> — keep a service's key here and test the connection.</p>
+    <p><b>WhatsApp Cloud API</b> — sends the welcome to new customers on WhatsApp by itself, using a template Meta has approved. <b>Webhook</b> — sends shop events (sales, MoMo checks, new customers…) to another system, such as Google Sheets through Apps Script, Make, Zapier or your own server. <b>SMS gateway</b> — Hubtel, Arkesel, mNotify or another provider; send a test SMS from here. <b>Other API</b> — keep a service's key here and test the connection.</p>
     <p>These connections work from the GitHub Pages address or the downloaded file. The claude.ai viewer and the chat preview block connections to other websites. Backups keep the keys only in encrypted form, usable on this device; on a new device, enter them again. MoMo payment-collection keys (Hubtel, Paystack, MTN MoMo) need a server: they belong in the server version, not in a browser.</p></div>
+    ${welcomeSettingsHTML()}
     <div class="row" style="margin:14px 0">${Object.entries(INT_KINDS).map(([k, l], i) => `<button class="btn ${i ? 'sec' : ''}" data-act="intedit" data-k="${k}">+ ${l}</button>`).join('')}</div>
     ${L.length ? `<div class="grid g2">${L.map(card).join('')}</div>` : '<p class="hint">No integrations yet.</p>'}
     <details class="tv"><summary>What a webhook receives (for whoever sets up the receiving side)</summary><p class="hint">One POST per event. The body is JSON, sent with the content type text/plain because browsers only allow that type to other sites. Each event has a unique <code>id</code>: ignore an id you have already seen. With a signing secret, <code>signature</code> is the hex HMAC-SHA256 of <code>event.id.ts.JSON(data)</code>.</p>
@@ -2177,6 +2337,12 @@ function intModal(kind, it) { const c = it ? it.cfg : {}, m = it ? it.mask || {}
       + txt('sender', 'Sender ID (11 characters at most, registered with the provider)', c.sender || '', 'ERICASBABY')
       + `<div id="i-idwrap" ${tpl.includes('{id}') ? '' : 'hidden'}>${sec('id', 'Client ID')}</div>` + sec('key', 'API key / client secret')
       + txt('test', 'Phone for test messages (optional)', c.test || '', '024 123 4567'); }
+  if (kind === 'whatsapp') body += `<div class="hint" style="margin:8px 0">From Meta Business → WhatsApp Manager. Meta lets a shop start a chat only with an <b>approved message template</b>: create a welcome template there first and type its exact name below.</div>`
+    + txt('pnid', 'Phone number ID', c.pnid, '123456789012345', 'The long number shown under your WhatsApp business number in Meta (not the phone number itself).')
+    + sec('token', 'Access token', 'A permanent system-user token with the whatsapp_business_messaging permission. Encrypted when saved.')
+    + `<div class="grid g2"><div>${txt('watpl', 'Welcome template name', c.tpl || 'welcome', 'welcome')}</div><div>${txt('lang', 'Template language code', c.lang || 'en', 'en')}</div></div>`
+    + `<label class="row" style="gap:6px;margin-top:10px"><input type="checkbox" id="i-namevar" ${c.nameVar ? 'checked' : ''}> The template has {{1}} for the customer's first name</label>`
+    + txt('ver', 'Graph API version', c.ver || 'v23.0', 'v23.0', 'Leave as it is unless Meta asks you to change it.') + txt('test', 'Phone for test messages (optional)', c.test || '', '024 123 4567');
   if (kind === 'api') body += txt('base', 'Service address (https://…)', c.base, 'https://api.example.com/v1')
     + `<label class="f" for="i-auth">How the key is sent</label><select class="i" id="i-auth">${[['bearer', 'Bearer token (Authorization header)'], ['header', 'In a header'], ['query', 'In the address (?name=key)'], ['none', 'No key']].map(([v, l]) => `<option value="${v}" ${(c.auth || 'bearer') === v ? 'selected' : ''}>${l}</option>`).join('')}</select>`
     + txt('hname', 'Header name (for "In a header")', c.hname || 'X-API-Key') + txt('qname', 'Parameter name (for "In the address")', c.qname || 'api_key') + sec('token', 'API key or token')
@@ -2195,6 +2361,12 @@ async function intSave(kind, id) { const it0 = id ? INT(id) : null, g = x => { c
     if (cfg.tpl.includes('{key}') && !g('key') && !has('key')) return err('Enter the API key.'); if (cfg.tpl.includes('{id}') && !g('id') && !has('id')) return err('Enter the client ID.');
     if (cfg.sender.length > 11) return err('The sender ID can be 11 characters at most.'); if (cfg.test && !normPhone(cfg.test)) return err('The test phone is not a valid Ghana number.');
     if (g('key')) ns.key = g('key'); if (g('id')) ns.id = g('id'); }
+  if (kind === 'whatsapp') { Object.assign(cfg, {pnid: g('pnid'), tpl: g('watpl'), lang: g('lang') || 'en', ver: g('ver') || 'v23.0', nameVar: $('#i-namevar').checked, test: g('test')});
+    if (!/^\d{6,20}$/.test(cfg.pnid)) return err('The phone number ID is the long number of digits from Meta, not the phone number.');
+    if (!/^[a-z0-9_]{1,512}$/.test(cfg.tpl)) return err('Template names use lowercase letters, numbers and underscores, exactly as in WhatsApp Manager.');
+    if (!/^[a-z]{2,3}(_[A-Z]{2})?$/.test(cfg.lang)) return err('The language code looks like en or en_GB.'); if (!/^v\d+\.\d+$/.test(cfg.ver)) return err('The API version looks like v23.0.');
+    if (cfg.test && !normPhone(cfg.test)) return err('The test phone is not a valid Ghana number.');
+    if (!g('token') && !has('token')) return err('Enter the access token.'); if (g('token')) ns.token = g('token'); }
   if (kind === 'api') { Object.assign(cfg, {base: g('base'), auth: g('auth'), hname: g('hname') || 'X-API-Key', qname: g('qname') || 'api_key', path: g('path')});
     if (!/^https:\/\/[^\s]+$/i.test(cfg.base)) return err('The service address must start with https:// and have no spaces.');
     if (cfg.auth === 'header' && !/^[A-Za-z0-9-]+$/.test(cfg.hname)) return err('A header name can use only letters, numbers and hyphens.');
@@ -2322,6 +2494,7 @@ window.addEventListener('online', () => cur && render()); window.addEventListene
   db = load();
   if (!db) { db = await seed(); save(); await audit('system', 'Sample data created'); }
   if (db.settings.decor3d === undefined) db.settings.decor3d = true;
+  if (!db.settings.autoWelcome) db.settings.autoWelcome = {sms: true, whatsapp: true}; if (!db.msgQueue) db.msgQueue = [];
   if (!db.settings.reorderDays) db.settings.reorderDays = 7;
   render();
 })();
